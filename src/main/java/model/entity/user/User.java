@@ -17,7 +17,7 @@ import model.entity.position.Position;
 @Table(name = "user")
 public class User {
 
-//variable
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_user")
@@ -43,7 +43,7 @@ public class User {
 	@JoinColumn(name = "id_position")
 	private Position position;
 
-//constructor
+
 	public User() {
 	}
 
@@ -71,7 +71,7 @@ public class User {
 		setPosition(position);
 	}
 
-//get
+
 	public Long getId() {
 		return id;
 	}
@@ -100,7 +100,7 @@ public class User {
 		return position;
 	}
 
-//set
+
 	public void setId(Long id) {
 		this.id = id;
 	}
