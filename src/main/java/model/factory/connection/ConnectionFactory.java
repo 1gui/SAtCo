@@ -20,11 +20,11 @@ public class ConnectionFactory {
 		configuration.addAnnotatedClass(model.entity.user.User.class);
 		configuration.addAnnotatedClass(model.entity.frequency.Frequency.class);
 		configuration.addAnnotatedClass(model.entity.position.Position.class);
-		
 
 		configuration.configure("hibernate.cfg.xml");
 
-		ServiceRegistry service = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+		ServiceRegistry service = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
+				.build();
 
 		SessionFactory factorySession = configuration.buildSessionFactory(service);
 

@@ -12,22 +12,21 @@ import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 @Entity
 @Table(name = "profile")
 public class Profile {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "login_profile", length = 20, nullable = false, unique = true)
 	private String login;
-	
+
 	@Column(name = "password_profile", length = 40, nullable = false, unique = false)
 	private String password;
-	
-	public Profile(String login, String password){
+
+	public Profile(String login, String password) {
 		setLogin(login);
 		setPassword(password);
 	}
-	
 
 	public String getLogin() {
 		return login;
@@ -50,7 +49,7 @@ public class Profile {
 	}
 
 	public void setId(Long id) {
-		this.id= id;
+		this.id = id;
 	}
 
 }

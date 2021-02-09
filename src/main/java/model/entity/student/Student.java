@@ -16,38 +16,36 @@ import model.entity.course.Course;
 @Entity
 @Table(name = "student")
 public class Student {
-	
-	//Variables
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		@Column(name = "id_student")
-		private Long id;
-		
-		@Column(name = "name_student", length=40, nullable = false, unique = false)
-		private String name;
-		
-		@Column(name = "cpf_student", length = 11, nullable = false, unique = true)
-		private String cpf;
-		
-		@Column(name = "email_student", length = 40, nullable = false, unique = true)
-		private String email;
-		
-		@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "id_course")
-		private Course course;
-		
-		@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "id_company")
-		private Company company;
 
-		
-		//Constructors
-	public Student() {}
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_student")
+	private Long id;
+
+	@Column(name = "name_student", length = 40, nullable = false, unique = false)
+	private String name;
+
+	@Column(name = "cpf_student", length = 11, nullable = false, unique = true)
+	private String cpf;
+
+	@Column(name = "email_student", length = 40, nullable = false, unique = true)
+	private String email;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_course")
+	private Course course;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_company")
+	private Company company;
+
+	public Student() {
+	}
+
 	public Student(Long id) {
 		setId(id);
 	}
-	
+
 	public Student(String name, String cpf, String email, Course course, Company company) {
 		setName(name);
 		setCpf(cpf);
@@ -55,7 +53,7 @@ public class Student {
 		setCourse(course);
 		setCompany(company);
 	}
-	
+
 	public Student(Long id, String name, String cpf, String email, Course course, Company company) {
 		setId(id);
 		setName(name);
@@ -64,8 +62,7 @@ public class Student {
 		setCourse(course);
 		setCompany(company);
 	}
-	
-	//Getters & Setters
+
 	public Long getId() {
 		return id;
 	}

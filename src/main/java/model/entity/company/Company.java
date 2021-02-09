@@ -18,23 +18,23 @@ public class Company {
 
 	@Column(name = "name_company", length = 40, nullable = false, unique = false)
 	private String name;
-	
+
 	@Column(name = "cnpj_company", length = 18, nullable = false, unique = false)
 	private String cnpj;
-	
+
 	@Column(name = "email= company", length = 40, nullable = false, unique = false)
 	private String email;
-	
+
 	@Column(name = "address_company", length = 40, nullable = false, unique = false)
 	private String address;
-	
+
 	@Column(name = "phone_company", length = 15, nullable = false, unique = false)
 	private Long phone;
-	
-	public Company() {}
 
-	public Company(Long id, String name, String cnpj, String email,
-			String address, Long phone) {
+	public Company() {
+	}
+
+	public Company(Long id, String name, String cnpj, String email, String address, Long phone) {
 
 		setId(id);
 		setName(name);

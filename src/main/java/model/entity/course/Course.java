@@ -21,8 +21,6 @@ import model.entity.subject.Subject;
 @Table(name = "course")
 public class Course {
 
-	// Variables
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_course")
@@ -34,7 +32,6 @@ public class Course {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "subject", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Subject> subjects = new ArrayList<Subject>();
 
-	// Constructors
 	public Course() {
 	}
 
@@ -52,8 +49,6 @@ public class Course {
 		setName(name);
 		setSubjects(subjects);
 	}
-
-	// Getters & Setters
 
 	public Long getId() {
 		return id;
@@ -74,21 +69,17 @@ public class Course {
 	public List<Subject> getSubjects() {
 		return subjects;
 	}
-	
+
 	private void setSubjects(Subject subjects) {
-		
+
 	}
 
 	public void addSubject(Subject subject) {
-		subject.add(subject);
+		((List<Subject>) subjects).add(subject);
 	}
 
 	public void removeSubject(Subject subject) {
-		subject.remove(subject);
+		((List<Subject>) subjects).remove(subject);
 	}
 
-
 }
-
-
-
