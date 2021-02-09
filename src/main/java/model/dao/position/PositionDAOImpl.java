@@ -1,24 +1,24 @@
 package model.dao.position;
 
+import java.util.List;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
-import java.util.List;
 import model.entity.position.Position;
 import model.factory.connection.ConnectionFactory;
 
-
 public class PositionDAOImpl implements PositionDAO {
-	
+
 	private ConnectionFactory factory;
 
 	public PositionDAOImpl() {
 		factory = new ConnectionFactory();
 	}
-	
+
 	public void insertPosition(Position position) {
 
 		Session session = null;
@@ -29,7 +29,7 @@ public class PositionDAOImpl implements PositionDAO {
 			session.beginTransaction();
 
 			session.save(position);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception sqlException) {
@@ -144,5 +144,5 @@ public class PositionDAOImpl implements PositionDAO {
 
 		return position;
 
-	}	
+	}
 }

@@ -10,7 +10,7 @@ public class ProfileDAOImpl implements ProfileDAO {
 	private ConnectionFactory factory;
 
 	public ProfileDAOImpl() {
-		
+
 		factory = new ConnectionFactory();
 	}
 

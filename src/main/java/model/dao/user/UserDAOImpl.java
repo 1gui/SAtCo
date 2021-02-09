@@ -1,23 +1,24 @@
 package model.dao.user;
 
+import java.util.List;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
-import java.util.List;
 import model.entity.user.User;
 import model.factory.connection.ConnectionFactory;
 
 public class UserDAOImpl implements UserDAO {
-	
+
 	private ConnectionFactory factory;
 
 	public UserDAOImpl() {
 		factory = new ConnectionFactory();
 	}
-	
+
 	public void insertUser(User user) {
 
 		Session session = null;
@@ -28,7 +29,7 @@ public class UserDAOImpl implements UserDAO {
 			session.beginTransaction();
 
 			session.save(user);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception sqlException) {

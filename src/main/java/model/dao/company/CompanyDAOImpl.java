@@ -11,15 +11,14 @@ import org.hibernate.Session;
 import model.entity.company.Company;
 import model.factory.connection.ConnectionFactory;
 
-
 public class CompanyDAOImpl implements CompanyDAO {
-	
+
 	private ConnectionFactory factory;
 
 	public CompanyDAOImpl() {
 		factory = new ConnectionFactory();
 	}
-	
+
 	public void insertCompany(Company company) {
 
 		Session session = null;
@@ -30,7 +29,7 @@ public class CompanyDAOImpl implements CompanyDAO {
 			session.beginTransaction();
 
 			session.save(company);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception sqlException) {

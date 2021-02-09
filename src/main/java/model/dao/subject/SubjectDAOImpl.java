@@ -1,12 +1,13 @@
 package model.dao.subject;
 
+import java.util.List;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
-import java.util.List;
 import model.entity.subject.Subject;
 import model.factory.connection.ConnectionFactory;
 

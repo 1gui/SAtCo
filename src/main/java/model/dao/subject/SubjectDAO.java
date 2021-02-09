@@ -1,6 +1,7 @@
 package model.dao.subject;
 
 import java.util.List;
+
 import model.entity.subject.Subject;
 
 public interface SubjectDAO {
