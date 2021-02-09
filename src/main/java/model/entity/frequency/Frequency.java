@@ -22,11 +22,10 @@ public class Frequency {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "status_frequency", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private FrequencyStatus status;
-	
 
 	@Column(name = "date_frequency")
 	private Date date;
