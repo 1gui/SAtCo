@@ -17,11 +17,11 @@ public class FrequencyDAOImpl implements FrequencyDAO {
 
 	public FrequencyDAOImpl() {
 		factory = new ConnectionFactory();
-		
+
 	}
-	
+
 	public void insertFrequency(Frequency frequency) {
-		
+
 		Session session = null;
 
 		try {
@@ -30,7 +30,7 @@ public class FrequencyDAOImpl implements FrequencyDAO {
 			session.beginTransaction();
 
 			session.save(frequency);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception sqlException) {
@@ -51,7 +51,7 @@ public class FrequencyDAOImpl implements FrequencyDAO {
 	}
 
 	public void removeFrequency(Frequency frequency) {
-		
+
 		Session session = null;
 
 		try {
@@ -81,7 +81,7 @@ public class FrequencyDAOImpl implements FrequencyDAO {
 	}
 
 	public void updateFrequency(Frequency frequency) {
-		
+
 		Session session = null;
 
 		try {
@@ -108,7 +108,7 @@ public class FrequencyDAOImpl implements FrequencyDAO {
 			}
 		}
 	}
-	
+
 	public List<Frequency> listFrequency() {
 
 		Session session = null;

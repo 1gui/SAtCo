@@ -5,13 +5,13 @@ import java.util.List;
 import model.entity.frequency.Frequency;
 
 public interface FrequencyDAO {
-	
+
 	void insertFrequency(Frequency frequency);
-	
+
 	void removeFrequency(Frequency frequency);
-	
+
 	void updateFrequency(Frequency frequency);
-	
+
 	List<Frequency> listFrequency();
 
 }
