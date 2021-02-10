@@ -7,10 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import model.entity.profile.Profile;
+import model.entity.user.User;
 
 @Entity
 @Table(name = "position")
@@ -23,10 +23,10 @@ public class Position {
 
 	@Column(name = "name_position", length = 40, nullable = false, unique = false)
 	private String name;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_profile")
-	private Profile profile;
+	
+	@OneToMany(fetch = FetchType.LAZY,  mappedBy = "user")
+	@JoinColumn(name = "id_user")
+	private User user;
 
 	public Position() {
 	}
@@ -35,15 +35,14 @@ public class Position {
 		setId(id);
 	}
 
-	public Position(Long id, String name, Profile profile) {
+	public Position(Long id, String name, User user) {
 		setId(id);
 		setName(name);
-		setProfile(profile);
+		setUser(user);
 	}
 
-	public Position(String name, Profile profile) {
+	public Position(String name) {
 		setName(name);
-		setProfile(profile);
 	}
 
 	public Long getId() {
@@ -62,11 +61,11 @@ public class Position {
 		this.name = name;
 	}
 
-	public Profile getProfile() {
-		return profile;
+	public User getUser() {
+		return user;
 	}
 
-	public void setProfile(Profile profile) {
-		this.profile = profile;
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

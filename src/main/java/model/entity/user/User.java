@@ -7,24 +7,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import model.entity.company.Company;
 import model.entity.position.Position;
+import model.entity.teacher.Teacher;
 
 @Entity
 @Table(name = "user")
 public class User {
 
-//variable
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_user")
 	private Long id;
-
-	@Column(name = "name_user", length = 40, nullable = false, unique = false)
-	private String name;
 
 	@Column(name = "username_user", length = 20, nullable = false, unique = true)
 	private String username;
@@ -32,18 +29,18 @@ public class User {
 	@Column(name = "password_user", length = 20, nullable = false, unique = false)
 	private String password;
 
-	@Column(name = "email.user", length = 40, nullable = false, unique = true)
-	private String email;
-
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_company")
 	private Company company;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_position")
 	private Position position;
 
-//constructor
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_teacher")
+	private Teacher teacher;
+
 	public User() {
 	}
 
@@ -51,33 +48,27 @@ public class User {
 		setId(id);
 	}
 
-	public User(String name, String username, String password, String email, Company company, Position position) {
-		setName(name);
+	public User(String username, String password, String email, Company company, Position position,
+			Teacher teacher) {
 		setUsername(username);
 		setPassword(password);
-		setEmail(email);
 		setCompany(company);
 		setPosition(position);
+		setTeacher(teacher);
 	}
 
-	public User(Long id, String name, String username, String password, String email, Company company,
-			Position position) {
+	public User(Long id, String username, String password, String email, Company company,
+			Position position, Teacher teacher) {
 		setId(id);
-		setName(name);
 		setUsername(username);
 		setPassword(password);
-		setEmail(email);
 		setCompany(company);
 		setPosition(position);
+		setTeacher(teacher);
 	}
 
-//get
 	public Long getId() {
 		return id;
-	}
-
-	public String getName() {
-		return name;
 	}
 
 	public String getUsername() {
@@ -88,10 +79,6 @@ public class User {
 		return password;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
 	public Company getCompany() {
 		return company;
 	}
@@ -100,13 +87,8 @@ public class User {
 		return position;
 	}
 
-//set
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public void setUsername(String username) {
@@ -117,10 +99,6 @@ public class User {
 		this.password = password;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public void setCompany(Company company) {
 		this.company = company;
 	}
@@ -129,4 +107,11 @@ public class User {
 		this.position = position;
 	}
 
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
 }
