@@ -10,11 +10,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
-
+import model.entity.course.Course;
 import model.entity.subject.Subject;
 
 @Entity
@@ -35,10 +34,26 @@ public class Teacher {
 	@Column(name = "email_teacher", length = 50, nullable = false, unique = true)
 	private String email;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "subject", cascade = CascadeType.ALL, orphanRemoval = true)
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "subject", cascade = CascadeType.ALL)
 	private List<Subject> subjects = new ArrayList<Subject>();
+	
+	@
+	private Course course;
 
 	public Teacher() {
+	}
+
+	public Teacher(String name, String cpf, String email) {
+		setName(name);
+		setCpf(cpf);
+		setEmail(email);
+	}
+
+	public Teacher(Long id, String name, String cpf, String email) {
+		setId(id);
+		setName(name);
+		setCpf(cpf);
+		setEmail(email);
 	}
 
 	public Teacher(String name, String cpf, String email, List<Subject> subject) {
@@ -49,16 +64,12 @@ public class Teacher {
 
 	}
 
-	public Teacher(Long id, String name, String cpf, String email, String subject) {
+	public Teacher(Long id, String name, String cpf, String email, List<Subject> subject) {
 		setId(id);
 		setName(name);
 		setCpf(cpf);
 		setEmail(email);
-
-	}
-
-	public Teacher(int id, String name, String cpf, String email, List<Subject> subjects) {
-
+		setSubjects(subject);
 	}
 
 	public Long getId() {
@@ -99,11 +110,19 @@ public class Teacher {
 	}
 
 	public void addSubject(Subject subject) {
-		((List<Subject>) subjects).add(subject);
+		((List<Subject>) subject).add(subject);
 	}
 
 	public void removeSubject(Subject subject) {
 		((List<Subject>) subjects).remove(subject);
+	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 }
