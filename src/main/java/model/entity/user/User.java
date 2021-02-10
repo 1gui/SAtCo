@@ -37,6 +37,7 @@ public class User {
 	@JoinColumn(name = "id_position")
 	private Position position;
 
+
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_teacher")
 	private Teacher teacher;
@@ -67,6 +68,7 @@ public class User {
 		setTeacher(teacher);
 	}
 
+
 	public Long getId() {
 		return id;
 	}
@@ -86,6 +88,7 @@ public class User {
 	public Position getPosition() {
 		return position;
 	}
+
 
 	public void setId(Long id) {
 		this.id = id;
@@ -107,6 +110,7 @@ public class User {
 		this.position = position;
 	}
 
+
 	public Teacher getTeacher() {
 		return teacher;
 	}
@@ -114,4 +118,6 @@ public class User {
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
 	}
+}
+
 }
