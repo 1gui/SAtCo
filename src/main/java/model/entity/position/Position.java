@@ -6,8 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import model.entity.user.User;
@@ -23,9 +22,8 @@ public class Position {
 
 	@Column(name = "name_position", length = 40, nullable = false, unique = false)
 	private String name;
-	
-	@OneToMany(fetch = FetchType.LAZY,  mappedBy = "user")
-	@JoinColumn(name = "id_user")
+
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
 	private User user;
 
 	public Position() {
