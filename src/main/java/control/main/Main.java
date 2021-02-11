@@ -28,6 +28,10 @@ import model.entity.subject.Subject;
 import model.entity.teacher.Teacher;
 import model.entity.user.User;
 
+import model.dao.company.CompanyDAO;
+import model.entity.company.Company;
+
+
 public class Main {
 
 	public static void main(String[] args) {
