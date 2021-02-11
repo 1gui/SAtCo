@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import model.entity.company.Company;
 import model.entity.course.Course;
+import model.entity.frequency.Frequency;
 
 @Entity
 @Table(name = "student")
@@ -32,13 +33,16 @@ public class Student {
 	@Column(name = "email_student", length = 40, nullable = false, unique = true)
 	private String email;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_course")
 	private Course course;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_company")
 	private Company company;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	private Frequency frequency;
 
 	public Student() {
 	}
@@ -110,5 +114,13 @@ public class Student {
 
 	public void setCompany(Company company) {
 		this.company = company;
+	}
+
+	public Frequency getFrequency() {
+		return frequency;
+	}
+
+	public void setFrequency(Frequency frequency) {
+		this.frequency = frequency;
 	}
 }
