@@ -5,7 +5,7 @@ import model.entity.company.Company;
 
 public interface CompanyDAO {
 
-	void insertCompany(Company company);
+	void insertCompany(Company company); 
 
 	void removeCompany(Company company);
 

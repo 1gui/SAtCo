@@ -13,9 +13,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 import model.entity.student.Student;
 import model.entity.subject.Subject;
 import model.entity.teacher.Teacher;
+
+import javax.security.auth.Subject;
+
 
 @Entity
 @Table(name = "course")
