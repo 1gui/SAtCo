@@ -1,7 +1,5 @@
 package control.main;
 
-
-
 import model.dao.company.CompanyDAO;
 import model.dao.company.CompanyDAOImpl;
 import model.dao.course.CourseDAO;
@@ -26,10 +24,13 @@ import model.dao.company.CompanyDAO;
 import model.entity.company.Company;
 
 
+import model.dao.company.CompanyDAO;
+import model.entity.company.Company;
+
+
 public class Main {
 
 	public static void main(String[] args) {
-		
 
 		//teacher
 		//frequency

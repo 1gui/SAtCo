@@ -18,6 +18,10 @@ import javax.persistence.Table;
 import model.entity.student.Student;
 
 
+import model.entity.student.Student;
+
+
+
 import model.enumeration.frequency.FrequencyStatus;
 
 @Entity

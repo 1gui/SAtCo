@@ -39,7 +39,6 @@ public class User {
 
 
 
-
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_teacher")
 	private Teacher teacher;
@@ -70,7 +69,6 @@ public class User {
 		setPosition(position);
 		setTeacher(teacher);
 	}
-
 
 
 	public Long getId() {
