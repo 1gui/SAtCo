@@ -3,16 +3,23 @@ package model.entity.course;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
+import model.entity.student.Student;
+import model.entity.subject.Subject;
+import model.entity.teacher.Teacher;
+
 import javax.security.auth.Subject;
+
 
 @Entity
 @Table(name = "course")
@@ -26,8 +33,16 @@ public class Course {
 	@Column(name = "name_course", length = 20, nullable = false, unique = false)
 	private String name;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "subject", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "subject")
+	@JoinColumn(name = "id_subject")
 	private List<Subject> subjects = new ArrayList<Subject>();
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_student")
+	private Student student;
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	private Teacher teacher;
 
 	public Course() {
 	}
@@ -77,6 +92,22 @@ public class Course {
 
 	public void removeSubject(Subject subject) {
 		((List<Subject>) subjects).remove(subject);
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 
 }
