@@ -113,4 +113,8 @@ public class User {
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 7c1b684143bb6c57c172e8a1ed7fdbdada747b75

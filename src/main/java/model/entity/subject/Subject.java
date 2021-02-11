@@ -29,14 +29,19 @@ public class Subject {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_teacher")
 	private Teacher teacher;
+<<<<<<< HEAD
 	
 	@OneToOne(fetch = FetchType.LAZY)
+=======
+
+	@ManyToMany(fetch = FetchType.LAZY)
+>>>>>>> 7c1b684143bb6c57c172e8a1ed7fdbdada747b75
 	@JoinColumn(name = "id_course")
 	private Course course;
 
 	public Subject() {
 	}
-	
+
 	public Subject(String name) {
 		setName(name);
 	}

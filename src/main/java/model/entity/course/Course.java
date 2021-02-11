@@ -13,10 +13,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 7c1b684143bb6c57c172e8a1ed7fdbdada747b75
 
 import model.entity.student.Student;
 import model.entity.subject.Subject;
 import model.entity.teacher.Teacher;
+<<<<<<< HEAD
+=======
+=======
+import javax.security.auth.Subject;
+>>>>>>> ae5733225d3af3d7b6b6f0ac9138f525431dba01
+>>>>>>> 7c1b684143bb6c57c172e8a1ed7fdbdada747b75
 
 
 @Entity

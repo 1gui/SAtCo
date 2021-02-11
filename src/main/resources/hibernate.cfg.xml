@@ -11,6 +11,11 @@
 		<property name="hbm2ddl.auto">create</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">Senha2020</property>
+<<<<<<< HEAD
+=======
+		<property name="hibernate.connection.password">@senac2020</property>
+		<property name="hibernate.connection.password">@senac2020</property>
+>>>>>>> 7c1b684143bb6c57c172e8a1ed7fdbdada747b75
 		<property name="show_sql">true</property>
 		<property name="hibernate.current_session_context_class">thread</property>	
 		<mapping class= "model.entity.teacher.Teacher"/>

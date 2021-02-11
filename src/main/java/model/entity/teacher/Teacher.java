@@ -13,9 +13,19 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+<<<<<<< HEAD
 
 import model.entity.course.Course;
 import model.entity.subject.Subject;
+=======
+<<<<<<< HEAD
+
+import model.entity.course.Course;
+import model.entity.subject.Subject;
+=======
+import javax.security.auth.Subject;
+>>>>>>> ae5733225d3af3d7b6b6f0ac9138f525431dba01
+>>>>>>> 7c1b684143bb6c57c172e8a1ed7fdbdada747b75
 
 @Entity
 @Table(name = "teacher")
@@ -38,7 +48,11 @@ public class Teacher {
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "subject", cascade = CascadeType.ALL)
 	private List<Subject> subjects = new ArrayList<Subject>();
 
+<<<<<<< HEAD
 	@OneToOne(fetch = FetchType.LAZY)
+=======
+	@OneToMany(fetch = FetchType.LAZY)
+>>>>>>> 7c1b684143bb6c57c172e8a1ed7fdbdada747b75
 	private Course course;
 
 	public Teacher() {
