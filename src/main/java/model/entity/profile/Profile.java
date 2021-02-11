@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
-
 @Entity
 @Table(name = "profile")
 public class Profile {
@@ -22,6 +20,15 @@ public class Profile {
 
 	@Column(name = "password_profile", length = 40, nullable = false, unique = false)
 	private String password;
+	
+	public Profile() {
+	}
+	
+	public Profile(Long id, String login, String password ) {
+		setId(id);
+		setLogin(login);
+		setPassword(password);
+	}
 
 	public Profile(String login, String password) {
 		setLogin(login);

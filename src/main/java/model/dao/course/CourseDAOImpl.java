@@ -1,5 +1,5 @@
 package model.dao.course;
-
+ 
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
