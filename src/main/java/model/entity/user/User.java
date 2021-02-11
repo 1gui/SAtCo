@@ -37,13 +37,9 @@ public class User {
 	@JoinColumn(name = "id_position")
 	private Position position;
 
-
-
-
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_teacher")
 	private Teacher teacher;
-
 
 	public User() {
 	}
@@ -52,8 +48,7 @@ public class User {
 		setId(id);
 	}
 
-	public User(String username, String password, String email, Company company, Position position,
-			Teacher teacher) {
+	public User(String username, String password, String email, Company company, Position position, Teacher teacher) {
 		setUsername(username);
 		setPassword(password);
 		setCompany(company);
@@ -61,8 +56,8 @@ public class User {
 		setTeacher(teacher);
 	}
 
-	public User(Long id, String username, String password, String email, Company company,
-			Position position, Teacher teacher) {
+	public User(Long id, String username, String password, String email, Company company, Position position,
+			Teacher teacher) {
 		setId(id);
 		setUsername(username);
 		setPassword(password);
@@ -70,8 +65,6 @@ public class User {
 		setPosition(position);
 		setTeacher(teacher);
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -93,7 +86,6 @@ public class User {
 		return position;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -114,7 +106,6 @@ public class User {
 		this.position = position;
 	}
 
-
 	public Teacher getTeacher() {
 		return teacher;
 	}
@@ -122,6 +113,4 @@ public class User {
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
 	}
-}
-
 }

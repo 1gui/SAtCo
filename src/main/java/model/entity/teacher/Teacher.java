@@ -15,12 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 import model.entity.course.Course;
 import model.entity.subject.Subject;
-
-import javax.security.auth.Subject;
-
 
 @Entity
 @Table(name = "teacher")
@@ -43,7 +39,7 @@ public class Teacher {
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "subject", cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_subject")
 	private List<Subject> subjects = new ArrayList<Subject>();
-	
+
 	@OneToMany(fetch = FetchType.LAZY)
 	private Course course;
 

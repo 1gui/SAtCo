@@ -20,11 +20,11 @@ public class Profile {
 
 	@Column(name = "password_profile", length = 40, nullable = false, unique = false)
 	private String password;
-	
+
 	public Profile() {
 	}
-	
-	public Profile(Long id, String login, String password ) {
+
+	public Profile(Long id, String login, String password) {
 		setId(id);
 		setLogin(login);
 		setPassword(password);

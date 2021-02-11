@@ -28,14 +28,14 @@ public class Subject {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_teacher")
 	private Teacher teacher;
-	
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_course")
 	private Course course;
 
 	public Subject() {
 	}
-	
+
 	public Subject(String name) {
 		setName(name);
 	}
