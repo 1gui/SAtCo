@@ -1,6 +1,18 @@
 package control.main;
 
 
+import model.dao.company.CompanyDAO;
+import model.dao.company.CompanyDAOImpl;
+import model.dao.course.CourseDAO;
+import model.dao.course.CourseDAOImpl;
+import model.dao.frequency.FrequencyDAO;
+import model.dao.frequency.FrequencyDAOImpl;
+import model.dao.student.StudentDAO;
+import model.dao.student.StudentDAOImpl;
+import model.dao.subject.SubjectDAO;
+import model.dao.subject.SubjectDAOImpl;
+import model.dao.teacher.TeacherDAO;
+import model.dao.teacher.TeacherDAOImpl;
 import model.entity.company.Company;
 import model.entity.course.Course;
 import model.entity.frequency.Frequency;
@@ -27,7 +39,19 @@ public class Main {
 		Frequency frequency = new Frequency(null, student);
 		
 		
-		
+		CompanyDAO companydao = new CompanyDAOImpl();
+		SubjectDAO subjectdao = new SubjectDAOImpl();
+		TeacherDAO teacherdao = new TeacherDAOImpl();
+		CourseDAO coursedao = new CourseDAOImpl();
+		StudentDAO studentdao = new StudentDAOImpl();
+		FrequencyDAO frequencydao = new FrequencyDAOImpl();
+	
+		companydao.insertCompany(company);
+		subjectdao.insertSubject(subject);
+		teacherdao.insertTeacher(teacher);
+		coursedao.insertCourse(course);
+		studentdao.insertStudent(student);
+		frequencydao.insertFrequency(frequency);
 		
 	}
 }

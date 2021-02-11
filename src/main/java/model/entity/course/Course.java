@@ -33,12 +33,11 @@ public class Course {
 	@JoinColumn(name = "id_subject")
 	private List<Subject> subjects = new ArrayList<Subject>();
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
+	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_student")
 	private Student student;
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_teacher")
 	private Teacher teacher;
 
 	public Course() {

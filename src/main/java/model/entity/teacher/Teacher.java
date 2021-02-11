@@ -10,7 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import model.entity.course.Course;
@@ -35,9 +37,10 @@ public class Teacher {
 	private String email;
 
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "subject", cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_subject")
 	private List<Subject> subjects = new ArrayList<Subject>();
 	
-	@
+	@OneToMany(fetch = FetchType.LAZY)
 	private Course course;
 
 	public Teacher() {
@@ -110,7 +113,7 @@ public class Teacher {
 	}
 
 	public void addSubject(Subject subject) {
-		((List<Subject>) subject).add(subject);
+		((List<Subject>) subjects).add(subject);
 	}
 
 	public void removeSubject(Subject subject) {
