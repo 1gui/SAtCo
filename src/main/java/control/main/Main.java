@@ -1,7 +1,4 @@
 package control.main;
-
-<<<<<<< HEAD
-
 import model.dao.company.CompanyDAO;
 import model.dao.company.CompanyDAOImpl;
 import model.dao.course.CourseDAO;
@@ -20,17 +17,15 @@ import model.entity.frequency.Frequency;
 import model.entity.student.Student;
 import model.entity.subject.Subject;
 import model.entity.teacher.Teacher;
+import model.enumeration.frequency.FrequencyStatus;
 
-=======
-import model.dao.company.CompanyDAO;
-import model.entity.company.Company;
->>>>>>> ae5733225d3af3d7b6b6f0ac9138f525431dba01
+
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-<<<<<<< HEAD
+
 		//teacher
 		//frequency
 		//student
@@ -42,8 +37,8 @@ public class Main {
 		Teacher teacher = new Teacher("João", "12341234", "joaozinho@email.com");
 		Course course = new Course("Javaweb", subject);
 		Student student = new Student("Guilherme", "12312312", "gui123@email.com", course, company);
-		Frequency frequency = new Frequency(null, student);
-		
+		FrequencyStatus status = FrequencyStatus.values()[0];
+		Frequency frequency =  new Frequency(status, student);
 		
 		CompanyDAO companydao = new CompanyDAOImpl();
 		SubjectDAO subjectdao = new SubjectDAOImpl();
@@ -59,27 +54,6 @@ public class Main {
 		studentdao.insertStudent(student);
 		frequencydao.insertFrequency(frequency);
 		
-=======
-		CompanyDAO companyDAO = new CompanyDAOIMPL();
-		//PositionDAO positionDAO = new positionDAOIMPL();
-		//ProfileDAO profileDAO = new profileDAOIMPL();
-		//UserDAO userDAO = new userDAOIMPL();
-		
-		String name = "AmbevTech";
-		String cnpj = "192.324.124-59";
-		String email = "ambevtech@gmail.com";
-		String address = "rua gasparzinho";
-		int phone = 47932019392;
-		
-		Company company = new Company();
-		
-		company.setName(name);
-		company.setCnpj(cnpj);
-		company.setEmail(email);
-		company.setAddress(address);
-		company.setPhone(phone);
-		
-		CompanyDAO.insertCompany(company);
->>>>>>> ae5733225d3af3d7b6b6f0ac9138f525431dba01
+
 	}
 }

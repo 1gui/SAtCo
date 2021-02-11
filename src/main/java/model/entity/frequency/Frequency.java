@@ -10,14 +10,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-<<<<<<< HEAD
 import model.entity.student.Student;
-=======
->>>>>>> ae5733225d3af3d7b6b6f0ac9138f525431dba01
 import model.enumeration.frequency.FrequencyStatus;
 
 @Entity
@@ -39,7 +35,6 @@ public class Frequency {
 	private String jusfied;
 
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "student")
-	@JoinColumn(name = "id_student")
 	private Student student;
 	
 	

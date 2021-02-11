@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import model.entity.company.Company;
@@ -31,7 +32,7 @@ public class Student {
 	@Column(name = "email_student", length = 40, nullable = false, unique = true)
 	private String email;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_course")
 	private Course course;
 

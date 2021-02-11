@@ -11,15 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-<<<<<<< HEAD
 
 import model.entity.student.Student;
 import model.entity.subject.Subject;
 import model.entity.teacher.Teacher;
-=======
-import javax.security.auth.Subject;
->>>>>>> ae5733225d3af3d7b6b6f0ac9138f525431dba01
+
 
 @Entity
 @Table(name = "course")
@@ -34,14 +32,13 @@ public class Course {
 	private String name;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "subject")
-	@JoinColumn(name = "id_subject")
 	private List<Subject> subjects = new ArrayList<Subject>();
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_student")
 	private Student student;
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	private Teacher teacher;
 
 	public Course() {

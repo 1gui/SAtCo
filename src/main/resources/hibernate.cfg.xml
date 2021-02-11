@@ -10,11 +10,7 @@
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/student_attendence_control?createDatabaseIfNotExist=true&amp;useTimezone=true&amp;serverTimezone=UTC</property>
 		<property name="hbm2ddl.auto">create</property>
 		<property name="hibernate.connection.username">root</property>
-<<<<<<< HEAD
 		<property name="hibernate.connection.password">Senha2020</property>
-=======
-		<property name="hibernate.connection.password">@senac2020</property>
->>>>>>> ae5733225d3af3d7b6b6f0ac9138f525431dba01
 		<property name="show_sql">true</property>
 		<property name="hibernate.current_session_context_class">thread</property>	
 		<mapping class= "model.entity.teacher.Teacher"/>
