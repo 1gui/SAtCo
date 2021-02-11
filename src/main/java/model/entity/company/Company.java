@@ -21,29 +21,39 @@ public class Company {
 	@Column(name = "id_company")
 	private Long id;
 
-	@Column(name = "name_company", length = 40, nullable = false, unique = false)
+	@Column(name = "name_company", length = 40, nullable = false, unique = true)
 	private String name;
 
-	@Column(name = "cnpj_company", length = 18, nullable = false, unique = false)
+	@Column(name = "cnpj_company", length = 18, nullable = false, unique = true)
 	private String cnpj;
 
-	@Column(name = "email_company", length = 50, nullable = false, unique = false)
+	@Column(name = "email_company", length = 50, nullable = false, unique = true)
 	private String email;
 
 	@Column(name = "address_company", length = 140, nullable = false, unique = false)
 	private String address;
 
-	@Column(name = "phone_company", length = 15, nullable = false, unique = false)
-	private int phone;
+	@Column(name = "phone_company", length = 20, nullable = false, unique = true)
+	private String phone;
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user")
 	private User user;
 
 	public Company() {
 	}
 
-	public Company(Long id, String name, String cnpj, String email, String address, int phone, User user) {
+	public Company(String name, String cnpj, String email, String address, String phone) {
+
+		setName(name);
+		setCnpj(cnpj);
+		setEmail(email);
+		setAddress(address);
+		setPhone(phone);
+
+	}
+	
+	public Company(Long id, String name, String cnpj, String email, String address, String phone, User user) {
 		setId(id);
 		setName(name);
 		setCnpj(cnpj);
@@ -53,15 +63,6 @@ public class Company {
 
 	}
 
-	public Company(String name, String cnpj, String email, String address, int phone) {
-
-		setName(name);
-		setCnpj(cnpj);
-		setEmail(email);
-		setAddress(address);
-		setPhone(phone);
-
-	}
 
 	public Long getId() {
 		return id;
@@ -103,11 +104,11 @@ public class Company {
 		this.address = address;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

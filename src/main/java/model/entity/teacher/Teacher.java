@@ -10,22 +10,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-<<<<<<< HEAD
 
 import model.entity.course.Course;
 import model.entity.subject.Subject;
-=======
-<<<<<<< HEAD
-
-import model.entity.course.Course;
-import model.entity.subject.Subject;
-=======
-import javax.security.auth.Subject;
->>>>>>> ae5733225d3af3d7b6b6f0ac9138f525431dba01
->>>>>>> 7c1b684143bb6c57c172e8a1ed7fdbdada747b75
 
 @Entity
 @Table(name = "teacher")
@@ -45,15 +35,14 @@ public class Teacher {
 	@Column(name = "email_teacher", length = 50, nullable = false, unique = true)
 	private String email;
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "subject", cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_subject")
 	private List<Subject> subjects = new ArrayList<Subject>();
 
-<<<<<<< HEAD
-	@OneToOne(fetch = FetchType.LAZY)
-=======
-	@OneToMany(fetch = FetchType.LAZY)
->>>>>>> 7c1b684143bb6c57c172e8a1ed7fdbdada747b75
-	private Course course;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_course")
+	private List<Course> courses = new ArrayList<Course>();
 
 	public Teacher() {
 	}
@@ -132,12 +121,21 @@ public class Teacher {
 		((List<Subject>) subjects).remove(subject);
 	}
 
-	public Course getCourse() {
-		return course;
+
+	public List<Course> getCourses() {
+		return courses;
 	}
 
-	public void setCourse(Course course) {
-		this.course = course;
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
+	
+	public void addCourse(Course course) {
+		((List<Course>) courses).add(course);
+	}
+	
+	public void removeCourse(Course course) {
+		((List<Course>) courses).remove(course);
 	}
 
 }

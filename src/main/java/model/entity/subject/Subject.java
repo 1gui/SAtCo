@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,15 +26,10 @@ public class Subject {
 	private String name;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_teacher")
 	private Teacher teacher;
-<<<<<<< HEAD
+
 	
 	@OneToOne(fetch = FetchType.LAZY)
-=======
-
-	@ManyToMany(fetch = FetchType.LAZY)
->>>>>>> 7c1b684143bb6c57c172e8a1ed7fdbdada747b75
 	@JoinColumn(name = "id_course")
 	private Course course;
 

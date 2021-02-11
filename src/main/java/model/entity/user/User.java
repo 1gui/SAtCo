@@ -30,11 +30,9 @@ public class User {
 	private String password;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_company")
 	private Company company;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_position")
 	private Position position;
 
 	@OneToOne(fetch = FetchType.LAZY)
@@ -113,8 +111,7 @@ public class User {
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
 	}
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 7c1b684143bb6c57c172e8a1ed7fdbdada747b75
+
+
