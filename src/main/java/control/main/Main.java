@@ -1,7 +1,5 @@
 package control.main;
 
-<<<<<<< HEAD
-
 import model.dao.company.CompanyDAO;
 import model.dao.company.CompanyDAOImpl;
 import model.dao.course.CourseDAO;
@@ -21,16 +19,19 @@ import model.entity.student.Student;
 import model.entity.subject.Subject;
 import model.entity.teacher.Teacher;
 
-=======
+
 import model.dao.company.CompanyDAO;
 import model.entity.company.Company;
->>>>>>> ae5733225d3af3d7b6b6f0ac9138f525431dba01
+
+
+import model.dao.company.CompanyDAO;
+import model.entity.company.Company;
+
 
 public class Main {
 
 	public static void main(String[] args) {
-		
-<<<<<<< HEAD
+
 		//teacher
 		//frequency
 		//student
@@ -59,7 +60,7 @@ public class Main {
 		studentdao.insertStudent(student);
 		frequencydao.insertFrequency(frequency);
 		
-=======
+
 		CompanyDAO companyDAO = new CompanyDAOIMPL();
 		//PositionDAO positionDAO = new positionDAOIMPL();
 		//ProfileDAO profileDAO = new profileDAOIMPL();
@@ -80,6 +81,6 @@ public class Main {
 		company.setPhone(phone);
 		
 		CompanyDAO.insertCompany(company);
->>>>>>> ae5733225d3af3d7b6b6f0ac9138f525431dba01
+
 	}
 }

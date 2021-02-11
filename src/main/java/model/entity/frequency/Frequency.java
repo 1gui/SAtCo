@@ -14,10 +14,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-<<<<<<< HEAD
+
 import model.entity.student.Student;
-=======
->>>>>>> ae5733225d3af3d7b6b6f0ac9138f525431dba01
+
+
+import model.entity.student.Student;
+
+
+
 import model.enumeration.frequency.FrequencyStatus;
 
 @Entity

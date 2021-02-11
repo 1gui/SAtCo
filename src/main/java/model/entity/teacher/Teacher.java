@@ -16,11 +16,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 <<<<<<< HEAD
 
+
 import model.entity.course.Course;
 import model.entity.subject.Subject;
 =======
 import javax.security.auth.Subject;
 >>>>>>> ae5733225d3af3d7b6b6f0ac9138f525431dba01
+
+import javax.security.auth.Subject;
+
 
 @Entity
 @Table(name = "teacher")
