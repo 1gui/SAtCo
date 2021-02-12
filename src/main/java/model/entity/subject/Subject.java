@@ -26,6 +26,7 @@ public class Subject {
 	private String name;
 
 	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_teacher")
 	private Teacher teacher;
 
 	

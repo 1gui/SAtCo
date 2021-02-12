@@ -46,7 +46,7 @@ public class Frequency {
 	
 	public Frequency(FrequencyStatus status, Student student) {
 		setStatus(status);
-		new Date();
+		date = new Date();
 	}
 
 	public Frequency(String jusfied) {

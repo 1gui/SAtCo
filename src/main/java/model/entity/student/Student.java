@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import model.entity.company.Company;
@@ -41,7 +41,8 @@ public class Student {
 	@JoinColumn(name = "id_company")
 	private Company company;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_student")
 	private Frequency frequency;
 
 	public Student() {

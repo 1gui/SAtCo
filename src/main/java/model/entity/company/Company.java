@@ -1,5 +1,8 @@
 package model.entity.company;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,9 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import model.entity.student.Student;
 import model.entity.user.User;
 
 @Entity
@@ -39,6 +44,10 @@ public class Company {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user")
 	private User user;
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	JoinColumn(name = "id_student")
+	private List<Student> students = new ArrayList<Student>();
 
 	public Company() {
 	}
@@ -118,5 +127,13 @@ public class Company {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
 }
