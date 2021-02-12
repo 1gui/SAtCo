@@ -46,7 +46,7 @@ public class Company {
 	private User user;
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	JoinColumn(name = "id_student")
+	@JoinColumn(name = "id_student")
 	private List<Student> students = new ArrayList<Student>();
 
 	public Company() {
