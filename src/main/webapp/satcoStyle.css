@@ -1,0 +1,123 @@
+* {
+	font-family: Arial;
+}
+
+#loginBox {
+	font-size: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5%;
+	border-radius: 7px;
+	box-shadow: 5px 5px 5px grey;
+	width: 400px;
+	border-style: solid;
+	border-width: 10px;
+	border-color: rgb(138, 73, 202);
+	padding: 40px;
+	padding-top: 0px;
+	background: rgb(183, 73, 202);
+}
+
+#projectTitle {
+	font-family: Arial;
+	box-shadow: 0px 5px 5px grey;
+	color: rgb(205, 199, 210);
+	background-color: rgb(138, 73, 202);
+	margin: -8px;
+	padding: 10px;
+}
+
+input {
+	border-radius: 5px;
+	background-color: rgb(244, 180, 255);
+	padding: 3px;
+	border-color: rgb(138, 73, 202);
+	border-width: 3px;
+}
+
+#loginButton {
+	font-size: 30px;
+	font-family: "Book Antiqua";
+}
+
+#rollCallSubmit {
+	background-color: rgb(244, 180, 200);
+	border-color: rgb(244, 180, 255)
+}
+
+#rollSubDiv {
+	border-top-style: double;
+	border-top-color: rgb(244, 180, 200);
+	padding-top: 5px;
+}
+
+th, td {
+	background-color: rgb(183, 73, 202);
+	border-radius: 3px;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+#rollCallTitle {
+	border-bottom-style: double;
+	border-bottom-color: rgb(244, 180, 200);
+	padding-bottom: 5px;
+}
+
+#teacherRollCallTag {
+	border-top-style: double;
+	border-bottom-style: double;
+	border-color: rgb(244, 180, 200);
+}
+
+.standardTable {
+	background-color: rgb(244, 180, 255);
+	margin-bottom: 10;
+	margin-top: -5;
+	border-radius: 4px;
+}
+
+#rollCall {
+	max-width: max-content;
+	width: fit-content;
+	border-radius: 5px 15px;
+	background-color: rgb(183, 73, 202);
+	padding: 3px;
+	border-style: solid;
+	border-color: rgb(138, 73, 202);
+	border-width: 3px;
+	margin: 30 auto;
+}
+
+body {
+	background-color: rgb(205, 199, 210);
+}
+
+#reportStudentName {
+	display: grid;
+	grid-template-columns: max-content;
+}
+
+#reportBox {
+	padding: 10px;
+	max-width: max-content;
+	border-style: solid;
+	border-radius: 5px 10px;
+	margin: 30 auto;
+	border-color: rgb(138, 73, 202);
+	background-color: rgb(183, 73, 202);
+}
+
+#studentNameDisplay {
+	margin-bottom: 15px;
+}
+
+.bottomTopLine {
+	border-top-style: double;
+	border-bottom-style: double;
+	border-color: rgb(244, 180, 200)
+}
+
+#returnButton {
+	margin: 10px;
+}
