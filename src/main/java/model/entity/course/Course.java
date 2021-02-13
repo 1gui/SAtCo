@@ -36,6 +36,7 @@ public class Course {
 	private List<Subject> subjects = new ArrayList<Subject>();
 
 	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_student")
 	private List<Student> students = new ArrayList<Student>();
 
 	@ManyToMany(fetch = FetchType.LAZY)

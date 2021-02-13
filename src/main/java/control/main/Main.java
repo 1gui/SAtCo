@@ -1,7 +1,6 @@
 package control.main;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 
 import model.dao.company.CompanyDAO;
 import model.dao.company.CompanyDAOImpl;
@@ -73,13 +72,12 @@ public class Main {
 		subjectdao.insertSubject(subject);
 		coursedao.insertCourse(course);
 		teacherdao.insertTeacher(teacher);
-		frequencydao.insertFrequency(frequency);
 		studentdao.insertStudent(student);
 		
 		teacher.addSubject(subject);
 		teacher.addCourse(course);
 
-		
+		student.setCourse(course);		
 		frequency.setStatus(status);
 		frequency.setStudent(student);
 		
@@ -88,12 +86,17 @@ public class Main {
 		
 		teacherdao.updateTeacher(teacher);
 		coursedao.updateCourse(course);
-		frequencydao.updateFrequency(frequency);
+		studentdao.updateStudent(student);
 		
-
-		studentdao.listStudentsToCourse(course);
+		frequencydao.insertFrequency(frequency);
 		
 		
-
+		List<Student> students = studentdao.listStudentsToCourse(course);
+		
+		for(Student studentsRecover : students) {
+			
+			System.out.println("Nome: " + studentsRecover.getName());
+			
+		}
 	}
 }

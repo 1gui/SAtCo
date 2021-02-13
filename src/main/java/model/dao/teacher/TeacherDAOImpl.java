@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
+import model.entity.student.Student;
 import model.entity.teacher.Teacher;
 import model.factory.connection.ConnectionFactory;
 
@@ -116,9 +118,9 @@ public class TeacherDAOImpl implements TeacherDAO {
 			session = factory.getConnection().openSession();
 			session.beginTransaction();
 
-			CriteriaBuilder construtor = session.getCriteriaBuilder();
+			CriteriaBuilder cb = session.getCriteriaBuilder();
 
-			CriteriaQuery<Teacher> criteria = construtor.createQuery(Teacher.class);
+			CriteriaQuery<Teacher> criteria = cb.createQuery(Teacher.class);
 			Root<Teacher> rootCustomer = criteria.from(Teacher.class);
 
 			criteria.select(rootCustomer);
@@ -144,5 +146,46 @@ public class TeacherDAOImpl implements TeacherDAO {
 
 		return teacher;
 
+	}
+
+	public Teacher recoverTeacher(Teacher teacher) {
+		
+		Session session = null;
+		Teacher recoverTeacher = null;
+
+		try {
+
+			session = factory.getConnection().openSession();
+			session.beginTransaction();
+
+			CriteriaBuilder cb = session.getCriteriaBuilder();
+
+			CriteriaQuery<Teacher> criteria = cb.createQuery(Teacher.class);
+			Root<Teacher> rootCustomer = criteria.from(Teacher.class);
+			
+			criteria.select(rootCustomer);
+			
+			ParameterExpression<Long> idTeacher = cb.parameter(Long.class);
+			criteria.where(cb.equal(rootCustomer.get("id"), idTeacher));
+
+			recoverTeacher = session.createQuery(criteria).setParameter(idTeacher, teacher.getId()).getSingleResult();
+
+			session.getTransaction().commit();
+		
+		}	catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (session.getTransaction() != null) {
+				session.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (session != null) {
+				session.close();
+			}
+		}
+		return recoverTeacher;
 	}
 }

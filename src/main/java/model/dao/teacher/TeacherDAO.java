@@ -11,6 +11,8 @@ public interface TeacherDAO {
 	void removeTeacher(Teacher teacher);
 
 	void updateTeacher(Teacher teacher);
+	
+	Teacher recoverTeacher(Teacher teacher);
 
 	List<Teacher> listTeacher();
 
