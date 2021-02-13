@@ -10,8 +10,12 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
+import model.entity.company.Company;
+import model.entity.company.Company_;
 import model.entity.course.Course;
+import model.entity.course.Course_;
 import model.entity.student.Student;
+import model.entity.student.Student_;
 import model.factory.connection.ConnectionFactory;
 
 public class StudentDAOImpl implements StudentDAO {
@@ -119,9 +123,9 @@ public class StudentDAOImpl implements StudentDAO {
 			session = factory.getConnection().openSession();
 			session.beginTransaction();
 
-			CriteriaBuilder construtor = session.getCriteriaBuilder();
+			CriteriaBuilder cb = session.getCriteriaBuilder();
 
-			CriteriaQuery<Student> criteria = construtor.createQuery(Student.class);
+			CriteriaQuery<Student> criteria = cb.createQuery(Student.class);
 			Root<Student> rootCustomer = criteria.from(Student.class);
 
 			criteria.select(rootCustomer);
@@ -164,10 +168,10 @@ public class StudentDAOImpl implements StudentDAO {
 			CriteriaQuery<Student> criteria = cb.createQuery(Student.class);
 			Root<Student> rootCustomer = criteria.from(Student.class);
 
-			Join<Student, Course> JoinCourse = rootCustomer.join(Course_.student);
+			Join<Student, Course> JoinCourse = rootCustomer.join(Student_.course);
 
 			ParameterExpression<Long> idCourse = cb.parameter(Long.class);
-			criteria.where(cb.equal(JoinCourse.get(Course_.id), idCourse));
+			criteria.where(cb.equal(JoinCourse.get(Course_.ID), idCourse));
 
 			student = session.createQuery(criteria).setParameter(idCourse, course.getId()).getResultList();
 
@@ -190,5 +194,90 @@ public class StudentDAOImpl implements StudentDAO {
 
 		return student;
 
+	}
+
+	public List<Student> listStudentToCompany(Company company) {
+		
+		Session session = null;
+		List<Student> student = null;
+
+		try {
+
+			session = factory.getConnection().openSession();
+			session.beginTransaction();
+
+			CriteriaBuilder cb = session.getCriteriaBuilder();
+
+			CriteriaQuery<Student> criteria = cb.createQuery(Student.class);
+			Root<Student> rootCustomer = criteria.from(Student.class);
+
+			Join<Student, Company> JoinCompany = rootCustomer.join(Student_.company);
+
+			ParameterExpression<Long> idCompany = cb.parameter(Long.class);
+			criteria.where(cb.equal(JoinCompany.get(Company_.ID), idCompany));
+
+			student = session.createQuery(criteria).setParameter(idCompany, company.getId()).getResultList();
+
+			session.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (session.getTransaction() != null) {
+				session.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (session != null) {
+				session.close();
+			}
+		}
+
+		return student;
+	}
+
+	public Student recoverStudent(Student student) {
+		
+		Session session = null;
+		Student recoverStudent = null;
+
+		try {
+
+			session = factory.getConnection().openSession();
+			session.beginTransaction();
+
+			CriteriaBuilder cb = session.getCriteriaBuilder();
+
+			CriteriaQuery<Student> criteria = cb.createQuery(Student.class);
+			Root<Student> rootCustomer = criteria.from(Student.class);
+			
+			criteria.select(rootCustomer);
+			
+			ParameterExpression<Long> idStudent = cb.parameter(Long.class);
+			criteria.where(cb.equal(rootCustomer.get("id"), idStudent));
+
+			recoverStudent = session.createQuery(criteria).setParameter(idStudent, student.getId()).getSingleResult();
+
+			session.getTransaction().commit();
+		
+		}	catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (session.getTransaction() != null) {
+				session.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (session != null) {
+				session.close();
+			}
+		}
+		
+		return recoverStudent;
+		
 	}
 }

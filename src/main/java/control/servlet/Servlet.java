@@ -1,4 +1,4 @@
-package control.servlet;
+/*package control.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -70,3 +70,4 @@ public class Servlet extends HttpServlet{
 	}
 }
 
+*/

@@ -2,6 +2,7 @@ package model.dao.student;
 
 import java.util.List;
 
+import model.entity.company.Company;
 import model.entity.course.Course;
 import model.entity.student.Student;
 
@@ -13,7 +14,12 @@ public interface StudentDAO {
 
 	void updateStudent(Student student);
 
+	Student recoverStudent(Student student);
+	
 	List<Student> listStudent();
 	
 	List<Student> listStudentsToCourse(Course course);
+	
+	List<Student> listStudentToCompany(Company company);
+	
 }

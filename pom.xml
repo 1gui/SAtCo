@@ -111,7 +111,7 @@
 							</goals>
 							<configuration>
 								<sources>
-									<source>target/generated-sources/annotations</source>
+									<source><basedir>${basedir}/target/generated-sources/annotations</basedir></source>
 								</sources>
 							</configuration>
 						</execution>

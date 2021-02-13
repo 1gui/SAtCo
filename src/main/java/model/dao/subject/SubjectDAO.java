@@ -11,6 +11,8 @@ public interface SubjectDAO {
 	void removeSubject(Subject subject);
 
 	void updateSubject(Subject subject);
+	
+	Subject recorverSubject(Subject subject);
 
 	List<Subject> listSubject();
 }
