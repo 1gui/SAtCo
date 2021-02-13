@@ -42,11 +42,10 @@ public class Company {
 	private String phone;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_user")
 	private User user;
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	JoinColumn(name = "id_student")
+	@JoinColumn(name = "id_student")
 	private List<Student> students = new ArrayList<Student>();
 
 	public Company() {
@@ -129,11 +128,17 @@ public class Company {
 		this.user = user;
 	}
 
+	public void addStudent(Student student) {
+		students.add(student);
+	}
+	
+	public void removeStudent(Student student) {
+		students.remove(student);
+	}
+	
 	public List<Student> getStudents() {
 		return students;
 	}
 
-	public void setStudents(List<Student> students) {
-		this.students = students;
-	}
+
 }

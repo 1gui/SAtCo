@@ -19,8 +19,6 @@ import model.entity.student.Student;
 import model.entity.subject.Subject;
 import model.entity.teacher.Teacher;
 
-
-
 @Entity
 @Table(name = "course")
 public class Course {
@@ -36,10 +34,10 @@ public class Course {
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_subject")
 	private List<Subject> subjects = new ArrayList<Subject>();
-	
+
 	@OneToMany(fetch = FetchType.LAZY)
 	private List<Student> students = new ArrayList<Student>();
-	
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<Teacher> teachers = new ArrayList<Teacher>();
 
@@ -75,43 +73,40 @@ public class Course {
 		this.name = name;
 	}
 
+	public void addSubject(Subject subject) {
+		((List<Subject>) getSubjects()).add(subject);
+	}
+
+	public void removeSubject(Subject subject) {
+		subjects.remove(subject);
+	}
+
+	public void addSubject(Student student) {
+		students.add(student);
+	}
+
+	public void removeSubject(Student student) {
+		students.remove(student);
+	}
+
+	public void addTeacher(Teacher teacher) {
+		teachers.add(teacher);
+	}
+
+	public void removeTeacher(Teacher teacher) {
+		teachers.remove(teacher);
+	}
+
 	public List<Subject> getSubjects() {
 		return subjects;
 	}
 
-	
-	
-	public void addSubject(Subject subject) {
-		((List<Subject>) subjects).add(subject);
-	}
-
-	public void removeSubject(Subject subject) {
-		((List<Subject>) subjects).remove(subject);
-	}
-
-
 	public List<Student> getStudents() {
 		return students;
-	}
-
-	public void addSubject(Student student) {
-		((List<Student>) students).add(student);
-	}
-
-	public void removeSubject(Student student) {
-		((List<Student>) students).remove(student);
 	}
 
 	public List<Teacher> getTeachers() {
 		return teachers;
 	}
 
-	public void addTeacher(Teacher teacher) {
-		((List<Teacher>) teachers).add(teacher);
-	}
-
-	public void removeTeacher(Teacher teacher) {
-		((List<Teacher>)teachers).remove(teacher);
-	}
-	
 }

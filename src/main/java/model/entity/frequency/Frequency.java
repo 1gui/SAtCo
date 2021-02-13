@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import model.entity.student.Student;
@@ -30,27 +30,22 @@ public class Frequency {
 	private FrequencyStatus status;
 
 	@Column(name = "date_frequency")
-	private Date date;
+	private Date date = new Date();
 
 	@Column(name = "jusfied_frequency", length = 40, nullable = true, unique = false)
 	private String jusfied;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_student")
 	private Student student;
-	
-	
+
 	public Frequency() {
-		
-	}
-	
-	public Frequency(FrequencyStatus status, Student student) {
-		setStatus(status);
-		date = new Date();
 	}
 
-	public Frequency(String jusfied) {
-		setJusfied(jusfied);
+	public Frequency(FrequencyStatus status, Student student) {
+		setStatus(status);
+		setStudent(student);
+		new Date();
 	}
 
 	public Long getId() {
@@ -84,4 +79,15 @@ public class Frequency {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	
+
 }

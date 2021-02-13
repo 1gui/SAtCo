@@ -1,5 +1,8 @@
 package model.entity.student;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,8 +45,8 @@ public class Student {
 	private Company company;
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_student")
-	private Frequency frequency;
+	@JoinColumn(name = "id_frequency")
+	private List<Frequency> frequencys = new ArrayList<Frequency>();
 
 	public Student() {
 	}
@@ -117,11 +120,19 @@ public class Student {
 		this.company = company;
 	}
 
-	public Frequency getFrequency() {
-		return frequency;
+	public void addFrequency(Frequency frequency) {
+		frequencys.add(frequency);
+	}
+	
+	public void removeFrequency(Frequency frequency) {
+		frequencys.remove(frequency);
+	}
+	
+	public List<Frequency> getFrequencys() {
+		return frequencys;
 	}
 
-	public void setFrequency(Frequency frequency) {
-		this.frequency = frequency;
-	}
+	
+
+	
 }

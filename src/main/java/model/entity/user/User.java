@@ -36,7 +36,6 @@ public class User {
 	private Position position;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_teacher")
 	private Teacher teacher;
 
 	public User() {
@@ -46,7 +45,7 @@ public class User {
 		setId(id);
 	}
 
-	public User(String username, String password, String email, Company company, Position position, Teacher teacher) {
+	public User(String username, String password, Company company, Position position, Teacher teacher) {
 		setUsername(username);
 		setPassword(password);
 		setCompany(company);
@@ -54,13 +53,10 @@ public class User {
 		setTeacher(teacher);
 	}
 
-	public User(Long id, String username, String password, String email, Company company, Position position,
-			Teacher teacher) {
+	public User(Long id, String username, String password, Teacher teacher) {
 		setId(id);
 		setUsername(username);
 		setPassword(password);
-		setCompany(company);
-		setPosition(position);
 		setTeacher(teacher);
 	}
 
