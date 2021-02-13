@@ -46,7 +46,7 @@ public class User {
 		setId(id);
 	}
 
-	public User(String username, String password, String email, Company company, Position position, Teacher teacher) {
+	public User(String username, String password, Company company, Position position, Teacher teacher) {
 		setUsername(username);
 		setPassword(password);
 		setCompany(company);
@@ -54,7 +54,7 @@ public class User {
 		setTeacher(teacher);
 	}
 
-	public User(Long id, String username, String password, String email, Company company, Position position,
+	public User(Long id, String username, String password, Company company, Position position,
 			Teacher teacher) {
 		setId(id);
 		setUsername(username);
