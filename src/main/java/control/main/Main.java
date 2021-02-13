@@ -1,5 +1,8 @@
 package control.main;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 import model.dao.company.CompanyDAO;
 import model.dao.company.CompanyDAOImpl;
 import model.dao.course.CourseDAO;
@@ -52,10 +55,11 @@ public class Main {
 		Teacher teacher = new Teacher("João", "1212", "joaozinho@email.com");
 		
 		FrequencyStatus status = FrequencyStatus.values()[0];
-		Frequency frequency =  new Frequency(status, student);
+		Frequency frequency =  new Frequency();
 		Profile profile = new Profile();
 		Position position = new Position();
 
+		
 
 		CompanyDAO companydao = new CompanyDAOImpl();
 		SubjectDAO subjectdao = new SubjectDAOImpl();
@@ -76,13 +80,19 @@ public class Main {
 		teacher.addCourse(course);
 
 		
+		frequency.setStatus(status);
+		frequency.setStudent(student);
+		
 		course.addTeacher(teacher);
 		course.addSubject(subject);
 		
 		teacherdao.updateTeacher(teacher);
 		coursedao.updateCourse(course);
+		frequencydao.updateFrequency(frequency);
 		
 
+		studentdao.listStudentsToCourse(course);
+		
 		
 
 	}

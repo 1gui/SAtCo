@@ -12,10 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import model.entity.course.Course;
 import model.entity.subject.Subject;
+import model.entity.user.User;
 
 @Entity
 @Table(name = "teacher")
@@ -43,6 +45,9 @@ public class Teacher {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_course")
 	private List<Course> courses = new ArrayList<Course>();
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	private User user;
 
 	public Teacher() {
 	}
@@ -60,21 +65,6 @@ public class Teacher {
 		setEmail(email);
 	}
 
-	public Teacher(String name, String cpf, String email, List<Subject> subject) {
-		setName(name);
-		setCpf(cpf);
-		setEmail(email);
-		setSubjects(subject);
-
-	}
-
-	public Teacher(Long id, String name, String cpf, String email, List<Subject> subject) {
-		setId(id);
-		setName(name);
-		setCpf(cpf);
-		setEmail(email);
-		setSubjects(subject);
-	}
 
 	public Long getId() {
 		return id;
@@ -109,33 +99,41 @@ public class Teacher {
 		this.email = email;
 	}
 
-	public void setSubjects(List<Subject> subjects) {
-		this.subjects = subjects;
-	}
 
 	public void addSubject(Subject subject) {
-		((List<Subject>) subjects).add(subject);
+		((List<Subject>) getSubjects()).add(subject);
 	}
 
 	public void removeSubject(Subject subject) {
-		((List<Subject>) subjects).remove(subject);
+		((List<Subject>) getSubjects()).remove(subject);
 	}
 
+	
+	public void addCourse(Course course) {
+		((List<Course>) getCourses()).add(course);
+	}
+	
+	public void removeCourse(Course course) {
+		((List<Course>) getCourses()).remove(course);
+	}
 
 	public List<Course> getCourses() {
 		return courses;
 	}
 
-	public void setCourses(List<Course> courses) {
-		this.courses = courses;
+
+	public List<Subject> getSubjects() {
+		return subjects;
 	}
-	
-	public void addCourse(Course course) {
-		((List<Course>) courses).add(course);
+
+	public User getUser() {
+		return user;
 	}
-	
-	public void removeCourse(Course course) {
-		((List<Course>) courses).remove(course);
+
+	public void setUser(User user) {
+		this.user = user;
 	}
+
+
 
 }

@@ -2,6 +2,7 @@ package model.dao.student;
 
 import java.util.List;
 
+import model.entity.course.Course;
 import model.entity.student.Student;
 
 public interface StudentDAO {
@@ -13,4 +14,6 @@ public interface StudentDAO {
 	void updateStudent(Student student);
 
 	List<Student> listStudent();
+	
+	List<Student> listStudentsToCourse(Course course);
 }
