@@ -53,7 +53,13 @@ public class User {
 		setTeacher(teacher);
 	}
 
+
 	public User(Long id, String username, String password, Teacher teacher) {
+  }
+    
+	public User(Long id, String username, String password, Company company, Position position,
+			Teacher teacher) {
+
 		setId(id);
 		setUsername(username);
 		setPassword(password);
