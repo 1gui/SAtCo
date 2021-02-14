@@ -12,6 +12,8 @@ public interface FrequencyDAO {
 
 	void updateFrequency(Frequency frequency);
 
+	Frequency recoverFrequency(Frequency frequency);
+	
 	List<Frequency> listFrequency();
 
 }

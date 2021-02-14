@@ -52,6 +52,10 @@ public class Teacher {
 	public Teacher() {
 	}
 
+	public Teacher(Long id) {
+		setId(id);
+	}
+	
 	public Teacher(String name, String cpf, String email) {
 		setName(name);
 		setCpf(cpf);

@@ -116,9 +116,9 @@ public class PositionDAOImpl implements PositionDAO {
 			session = factory.getConnection().openSession();
 			session.beginTransaction();
 
-			CriteriaBuilder construtor = session.getCriteriaBuilder();
+			CriteriaBuilder cb = session.getCriteriaBuilder();
 
-			CriteriaQuery<Position> criteria = construtor.createQuery(Position.class);
+			CriteriaQuery<Position> criteria = cb.createQuery(Position.class);
 			Root<Position> rootCustomer = criteria.from(Position.class);
 
 			criteria.select(rootCustomer);

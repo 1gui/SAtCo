@@ -41,6 +41,10 @@ public class Frequency {
 
 	public Frequency() {
 	}
+	
+	public Frequency(Long id) {
+		setId(id);
+	}
 
 	public Frequency(FrequencyStatus status, Student student) {
 		setStatus(status);

@@ -39,20 +39,41 @@ public class Servlet extends HttpServlet{
 				showlogin(request, response);
 				break;
 				
-			case "/option":
-				showoptions(request, response);
+			case "/password":
+				showPassword(request, response);
 				break;
 			
-			case "/insert":
-				insertCompany(request, response);
+			case "/option":
+				showOptions(request, response);
+				break;
+			
+			case "/company":
+				showCompany(request, response);
 				break;
 				
-			case "/remove":
-				removeCompany(request, response);
+			case "/course":
+				showCourse(request, response);
 				break;
 				
-			case "/update":
-				updateCompany(request, response);
+			case "/frequency":
+				showFrequency(request, response);
+				break;
+				
+			case "/subject":
+				showSubject(request, response);
+				break;
+				
+			case "/teacher":
+				showTeacher(request, response);
+				break;
+				
+			case "/user":
+				showUser(request, response);
+				break;
+				
+				
+			case "/":
+				
 				
 				
 			}
@@ -69,5 +90,4 @@ public class Servlet extends HttpServlet{
 		
 	}
 }
-
 */

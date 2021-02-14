@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
@@ -109,6 +110,48 @@ public class FrequencyDAOImpl implements FrequencyDAO {
 		}
 	}
 
+	public Frequency recoverFrequency(Frequency frequency) {
+
+		Session session = null;
+		Frequency recoverFrequency = null;
+
+		try {
+
+			session = factory.getConnection().openSession();
+			session.beginTransaction();
+
+			CriteriaBuilder cb = session.getCriteriaBuilder();
+
+			CriteriaQuery<Frequency> criteria = cb.createQuery(Frequency.class);
+			Root<Frequency> rootCustomer = criteria.from(Frequency.class);
+
+			criteria.select(rootCustomer);
+
+			ParameterExpression<Long> idFrequency = cb.parameter(Long.class);
+			criteria.where(cb.equal(rootCustomer.get("id"), idFrequency));
+
+			recoverFrequency = session.createQuery(criteria).setParameter(idFrequency, frequency.getId()).getSingleResult();
+
+			session.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (session.getTransaction() != null) {
+				session.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (session != null) {
+				session.close();
+			}
+		}
+
+		return recoverFrequency;
+	}
+
 	public List<Frequency> listFrequency() {
 
 		Session session = null;
@@ -119,9 +162,9 @@ public class FrequencyDAOImpl implements FrequencyDAO {
 			session = factory.getConnection().openSession();
 			session.beginTransaction();
 
-			CriteriaBuilder construtor = session.getCriteriaBuilder();
+			CriteriaBuilder cb = session.getCriteriaBuilder();
 
-			CriteriaQuery<Frequency> criteria = construtor.createQuery(Frequency.class);
+			CriteriaQuery<Frequency> criteria = cb.createQuery(Frequency.class);
 			Root<Frequency> rootCustomer = criteria.from(Frequency.class);
 
 			criteria.select(rootCustomer);

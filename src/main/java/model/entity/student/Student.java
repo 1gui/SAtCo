@@ -54,6 +54,12 @@ public class Student {
 	public Student(Long id) {
 		setId(id);
 	}
+	
+	public Student(String name, String cpf, String email) {
+		setName(name);
+		setCpf(cpf);
+		setEmail(email);
+	}
 
 	public Student(String name, String cpf, String email, Course course, Company company) {
 		setName(name);

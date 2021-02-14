@@ -9,7 +9,6 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
-import model.entity.student.Student;
 import model.entity.teacher.Teacher;
 import model.factory.connection.ConnectionFactory;
 

@@ -11,6 +11,8 @@ public interface CourseDAO {
 	void removeCourse(Course course);
 
 	void updateCourse(Course course);
+	
+	Course recoverCourse(Course course);
 
 	List<Course> listCourse();
 }

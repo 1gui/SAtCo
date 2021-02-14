@@ -50,9 +50,12 @@ public class Company {
 
 	public Company() {
 	}
+	
+	public Company(Long id) {
+		setId(id);
+	}
 
 	public Company(String name, String cnpj, String email, String address, String phone) {
-
 		setName(name);
 		setCnpj(cnpj);
 		setEmail(email);
@@ -61,7 +64,7 @@ public class Company {
 
 	}
 	
-	public Company(Long id, String name, String cnpj, String email, String address, String phone, User user) {
+	public Company(Long id, String name, String cnpj, String email, String address, String phone) {
 		setId(id);
 		setName(name);
 		setCnpj(cnpj);

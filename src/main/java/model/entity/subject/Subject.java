@@ -6,7 +6,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -28,11 +27,14 @@ public class Subject {
 	@OneToOne(fetch = FetchType.LAZY)
 	private Teacher teacher;
 
-	
 	@OneToOne(fetch = FetchType.LAZY)
 	private Course course;
 
 	public Subject() {
+	}
+	
+	public Subject(Long id) {
+		setId(id);
 	}
 
 	public Subject(String name) {

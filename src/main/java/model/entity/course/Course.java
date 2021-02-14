@@ -49,11 +49,11 @@ public class Course {
 		setId(id);
 	}
 
-	public Course(String name, Subject subjects) {
+	public Course(String name) {
 		setName(name);
 	}
 
-	public Course(Long id, String name, Subject subjects) {
+	public Course(Long id, String name) {
 		setId(id);
 		setName(name);
 	}
