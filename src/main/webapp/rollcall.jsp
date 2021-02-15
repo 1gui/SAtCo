@@ -1,66 +1,47 @@
 <html>
 <head>
-<title>Chamada | SAtco</title>
 <link rel="stylesheet" href="satcoStyle.css">
+<title>Chamada | SAtCo</title>
 </head>
 <body>
-	<header id="projectTitle">
-		<h1>SAtCo</h1>
-		<h4>Student Attendance Control</h4>
+	<header>
+		<h1 id=>SAtCo</h1>
+		<p>Student Attendance Control</p>
 	</header>
-	<div id="rollCall">
-		<p id="teacherRollCallTag">Professor(a) EXAMPLE</p>
-		<h3 id="rollCallTitle">Chamada da turma EXAMPLE</h3>
-		<form id="students">
-			<table id="tableRollCall">
+	<div id="teacherOptions" class="sidebar">
+		<!-- Cada opção de turma deve ter o ID da turma que representa,
+                e o valor deve ser o nome da turma, todos os botões de turma deven ser gerados pelo .jsp -->
+		<h4>Turmas:</h4>
+		<form>
+			<select id="course" name="course">
+				<option id="">Turma tal</option>
+				<option id="">Turma outra</option>
+			</select> <input type="submit" value="Selecionar">
+		</form>
+	</div>
+	<!-- A tabela a seguir deve ser gerada pelo .jsp
+            contendo os alunos correspondentes da turma em ordem alfabetica;
+             Somente quando o botão correspondente aquela turma for precionado,
+              a tabela deve desaparecer ao submeter a chamada,
+               e a mesma tabela já preenchida deve aparecer se o botão for precionado novamente dentro do mesmo dia -->
+	<div name="studentAttendanceTable" class="centralBox">	
+		<form>
+			<table name="courseStudents" id="">
 				<tr>
 					<th>Aluno</th>
 					<th>Presença</th>
 				</tr>
 				<tr>
-					<td>EXAMPLE0</td>
-					<td><input type="checkbox" id=""> <label
-						for="checkbox">Presente</label></td>
+					<td>
+						<p name="studentName" id="">Anderleyson soares da silva
+							almeida campos de souza</p>
+					</td>
+					<td>
+					<input type="checkbox" id="">
+					</td>
 				</tr>
-				<tr>
-					<td>EXAMPLE1</td>
-					<td><input type="checkbox" id=""> <label
-						for="checkbox">Presente</label></td>
-				</tr>
-				<tr>
-					<td>EXAMPLE2</td>
-					<td><input type="checkbox" id=""> <label
-						for="checkbox">Presente</label></td>
-				</tr>
-				<tr>
-					<td>EXAMPLE3</td>
-					<td><input type="checkbox" id=""> <label
-						for="checkbox">Presente</label></td>
-				</tr>
-				<tr>
-					<td>EXAMPLE4</td>
-					<td><input type="checkbox" id=""> <label
-						for="checkbox">Presente</label></td>
-				</tr>
-				<tr>
-					<td>EXAMPLE5</td>
-					<td><input type="checkbox" id=""> <label
-						for="checkbox">Presente</label></td>
-				</tr>
-				<tr>
-					<td>EXAMPLE6</td>
-					<td><input type="checkbox" id=""> <label
-						for="checkbox">Presente</label></td>
-				</tr>
-				<tr>
-					<td>EXAMPLE7</td>
-					<td><input type="checkbox" id=""> <label
-						for="checkbox">Presente</label></td>
-				</tr>
-			</table>
-			<div id="rollSubDiv">
-				<input id="rollCallSubmit" type="submit" value="Submeter chamada">
-			</div>
+			</table><br>
+			<input type="submit" value="Registrar chamada">
 		</form>
 	</div>
 </body>
