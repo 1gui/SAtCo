@@ -12,7 +12,7 @@ public interface SubjectDAO {
 
 	void updateSubject(Subject subject);
 	
-	Subject recorverSubject(Subject subject);
+	Subject recoverSubject(Subject subject);
 
 	List<Subject> listSubject();
 }

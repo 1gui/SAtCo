@@ -10,7 +10,6 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 
 import model.entity.subject.Subject;
-import model.entity.teacher.Teacher;
 import model.factory.connection.ConnectionFactory;
 
 public class SubjectDAOImpl implements SubjectDAO {
@@ -148,7 +147,7 @@ public class SubjectDAOImpl implements SubjectDAO {
 
 	}
 
-	public Subject recorverSubject(Subject subject) {
+	public Subject recoverSubject(Subject subject) {
 
 		Session session = null;
 		Subject recoverSubject = null;

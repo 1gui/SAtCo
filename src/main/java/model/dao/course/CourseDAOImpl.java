@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
@@ -105,6 +106,48 @@ public class CourseDAOImpl implements CourseDAO {
 			}
 		}
 	}
+	
+	public Course recoverCourse(Course course) {
+
+		Session session = null;
+		Course recoverCourse = null;
+
+		try {
+
+			session = factory.getConnection().openSession();
+			session.beginTransaction();
+
+			CriteriaBuilder cb = session.getCriteriaBuilder();
+
+			CriteriaQuery<Course> criteria = cb.createQuery(Course.class);
+			Root<Course> rootCustomer = criteria.from(Course.class);
+
+			criteria.select(rootCustomer);
+			
+			ParameterExpression<Long> idCourse= cb.parameter(Long.class);
+			criteria.where(cb.equal(rootCustomer.get("id"), idCourse));
+
+			recoverCourse = session.createQuery(criteria).setParameter(idCourse, course.getId()).getSingleResult();
+
+			session.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (session.getTransaction() != null) {
+				session.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (session != null) {
+				session.close();
+			}
+		}
+
+		return recoverCourse;
+	}
 
 	public List<Course> listCourse() {
 
@@ -116,9 +159,9 @@ public class CourseDAOImpl implements CourseDAO {
 			session = factory.getConnection().openSession();
 			session.beginTransaction();
 
-			CriteriaBuilder construtor = session.getCriteriaBuilder();
+			CriteriaBuilder cb = session.getCriteriaBuilder();
 
-			CriteriaQuery<Course> criteria = construtor.createQuery(Course.class);
+			CriteriaQuery<Course> criteria = cb.createQuery(Course.class);
 			Root<Course> rootCustomer = criteria.from(Course.class);
 
 			criteria.select(rootCustomer);

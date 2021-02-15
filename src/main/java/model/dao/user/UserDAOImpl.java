@@ -116,9 +116,9 @@ public class UserDAOImpl implements UserDAO {
 			session = factory.getConnection().openSession();
 			session.beginTransaction();
 
-			CriteriaBuilder construtor = session.getCriteriaBuilder();
+			CriteriaBuilder cb = session.getCriteriaBuilder();
 
-			CriteriaQuery<User> criteria = construtor.createQuery(User.class);
+			CriteriaQuery<User> criteria = cb.createQuery(User.class);
 			Root<User> rootCustomer = criteria.from(User.class);
 
 			criteria.select(rootCustomer);
