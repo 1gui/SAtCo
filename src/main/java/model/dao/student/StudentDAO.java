@@ -20,6 +20,6 @@ public interface StudentDAO {
 	
 	List<Student> listStudentsToCourse(Course course);
 	
-	List<Student> listStudentToCompany(Company company);
+	List<Student> listStudentsToCompany(Company company);
 	
 }

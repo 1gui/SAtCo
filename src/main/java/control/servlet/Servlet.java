@@ -386,7 +386,7 @@ public class Servlet extends HttpServlet {
 			throws SQLException, IOException {
 
 		FrequencyStatus status = FrequencyStatus.values()[Integer.parseInt(request.getParameter("frequency"))];
-		Student student = request.getParameter("student");
+		Student student = (Student) request.getAttribute("student");
 		frequencydao.insertFrequency(new Frequency(status, student));
 		response.sendRedirect("list");
 	}
@@ -395,7 +395,7 @@ public class Servlet extends HttpServlet {
 			throws SQLException, IOException {
 
 		FrequencyStatus status = FrequencyStatus.values()[Integer.parseInt(request.getParameter("frequency"))];
-		Student student = request.getParameter("student");
+		Student student = (Student) request.getAttribute("student");
 		frequencydao.updateFrequency(new Frequency(status, student));
 		response.sendRedirect("list");
 	}
@@ -412,7 +412,9 @@ public class Servlet extends HttpServlet {
 	private void showStudentcompany(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
-		List<Student> students = studentdao.listStudentToCompany();
+		Long id = Long.parseLong(request.getParameter("id"));
+		Company company = companydao.recoverCompany(new Company(id));
+		List<Student> students = studentdao.listStudentsToCompany(company);
 		request.setAttribute("students", students);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("list-student-company.jsp");
 		dispatcher.forward(request, response);
@@ -421,7 +423,9 @@ public class Servlet extends HttpServlet {
 	private void showStudentcourse(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
-		List<Student> students = studentdao.listStudentsToCourse();
+		Long id = Long.parseLong(request.getParameter("id"));
+		Course course = coursedao.recoverCourse(new Course(id));
+		List<Student> students = studentdao.listStudentsToCourse(course);
 		request.setAttribute("students", students);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("list-student-course.jsp");
 		dispatcher.forward(request, response);

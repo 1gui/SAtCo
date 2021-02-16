@@ -23,6 +23,7 @@ public class Frequency {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_frequency")
 	private Long id;
 
 	@Column(name = "status_frequency", nullable = false)

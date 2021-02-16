@@ -1,4 +1,4 @@
-/*package control.main;
+package control.main;
 
 import java.util.List;
 
@@ -17,8 +17,6 @@ import model.dao.teacher.TeacherDAOImpl;
 import model.entity.company.Company;
 import model.entity.course.Course;
 import model.entity.frequency.Frequency;
-import model.entity.position.Position;
-import model.entity.profile.Profile;
 import model.entity.student.Student;
 import model.entity.subject.Subject;
 import model.entity.teacher.Teacher;
@@ -48,16 +46,15 @@ public class Main {
 
 		Company company = new Company("HBSIS", "12341234123", "hbsis@mail.com", "R. aquela rua la tlg", "47931313131");
 		Subject subject = new Subject("Geografia");
-		Course course = new Course("Javaweb", subject);
+		Course course = new Course("Javaweb");
 		Student student = new Student("Guilherme", "12312312", "gui123@email.com", course, company);
 
 		Teacher teacher = new Teacher("João", "1212", "joaozinho@email.com");
 		
 		FrequencyStatus status = FrequencyStatus.values()[0];
 		Frequency frequency =  new Frequency();
-		Profile profile = new Profile();
-		Position position = new Position();
 
+		course.addSubject(subject);
 		
 
 		CompanyDAO companydao = new CompanyDAOImpl();
@@ -100,4 +97,3 @@ public class Main {
 		}
 	}
 }
-*/
