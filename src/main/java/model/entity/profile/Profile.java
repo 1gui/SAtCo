@@ -13,6 +13,7 @@ public class Profile {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_profile")
 	private Long id;
 
 	@Column(name = "login_profile", length = 20, nullable = false, unique = true)

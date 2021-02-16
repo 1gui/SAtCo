@@ -429,8 +429,8 @@ public class Servlet extends HttpServlet {
 
 		Long id = Long.parseLong(request.getParameter("id"));
 		Company company = companydao.recoverCompany(new Company(id));
-		List<Student> students = studentdao.listStudentToCompany(company);
-		request.setAttribute("students", students);
+    List<Student> students = studentdao.listStudentsToCompany(company);
+    request.setAttribute("students", students);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("list-student-company.jsp");
 		dispatcher.forward(request, response);
 	}

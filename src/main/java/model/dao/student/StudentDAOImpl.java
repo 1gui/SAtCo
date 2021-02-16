@@ -196,7 +196,7 @@ public class StudentDAOImpl implements StudentDAO {
 
 	}
 
-	public List<Student> listStudentToCompany(Company company) {
+	public List<Student> listStudentsToCompany(Company company) {
 		
 		Session session = null;
 		List<Student> student = null;
