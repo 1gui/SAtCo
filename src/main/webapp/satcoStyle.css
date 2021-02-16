@@ -1,123 +1,89 @@
-* {
-	font-family: Arial;
+/* Seletores por elemento */
+header {
+	min-width: 100%;
+	background-color: rgb(150, 3, 150);
+	padding-left: 10px;
+	padding-bottom: 12px;
+	padding-top: 20px;
+	margin-left: -10px;
+	margin-right: -40px;
+	margin-top: -21px;
 }
 
-#loginBox {
-	font-size: 30px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 5%;
-	border-radius: 7px;
-	box-shadow: 5px 5px 5px grey;
-	width: 400px;
-	border-style: solid;
-	border-width: 10px;
-	border-color: rgb(138, 73, 202);
-	padding: 40px;
-	padding-top: 0px;
-	background: rgb(183, 73, 202);
+th {
+	border-radius: 2px;
+	padding: 5px;
+	background-color: rgb(202, 63, 202);
 }
 
-#projectTitle {
-	font-family: Arial;
-	box-shadow: 0px 5px 5px grey;
-	color: rgb(205, 199, 210);
-	background-color: rgb(138, 73, 202);
-	margin: -8px;
-	padding: 10px;
-}
-
-input {
-	border-radius: 5px;
-	background-color: rgb(244, 180, 255);
-	padding: 3px;
-	border-color: rgb(138, 73, 202);
-	border-width: 3px;
-}
-
-#loginButton {
-	font-size: 30px;
-	font-family: "Book Antiqua";
-}
-
-#rollCallSubmit {
-	background-color: rgb(244, 180, 200);
-	border-color: rgb(244, 180, 255)
-}
-
-#rollSubDiv {
-	border-top-style: double;
-	border-top-color: rgb(244, 180, 200);
-	padding-top: 5px;
+td {
+	border-radius: 2px;
+	padding: 5px;
+	background-color: rgb(240, 106, 240);
 }
 
 th, td {
-	background-color: rgb(183, 73, 202);
-	border-radius: 3px;
-	padding-left: 3px;
-	padding-right: 3px;
-}
-
-#rollCallTitle {
-	border-bottom-style: double;
-	border-bottom-color: rgb(244, 180, 200);
-	padding-bottom: 5px;
-}
-
-#teacherRollCallTag {
-	border-top-style: double;
-	border-bottom-style: double;
-	border-color: rgb(244, 180, 200);
-}
-
-.standardTable {
-	background-color: rgb(244, 180, 255);
-	margin-bottom: 10;
-	margin-top: -5;
-	border-radius: 4px;
-}
-
-#rollCall {
-	max-width: max-content;
-	width: fit-content;
-	border-radius: 5px 15px;
-	background-color: rgb(183, 73, 202);
-	padding: 3px;
-	border-style: solid;
-	border-color: rgb(138, 73, 202);
-	border-width: 3px;
-	margin: 30 auto;
+	text-align: center;
 }
 
 body {
-	background-color: rgb(205, 199, 210);
+	background-color: lightgray;
 }
 
-#reportStudentName {
-	display: grid;
-	grid-template-columns: max-content;
+input {
+	border-radius: 3px;
 }
 
-#reportBox {
-	padding: 10px;
+table {
+	background-color: black;
+}
+
+select {
+	border-radius: 4px;
+	background-color: rgb(250, 171, 250);
+	border-color: rgb(158, 67, 243);
+}
+
+/* Seletores por Classe */
+.topBottomDoubleBorder {
+	padding: 0px 3px 0px 3px;
+	border-style: double;
+	border-width: 5px 0px 5px 0px;
+}
+
+.centralBox {
+	border-radius: 5px;
+	font-size: larger;
 	max-width: max-content;
+	padding: 5px 20px 5px 20px;
+	margin-top: 70px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgb(149, 60, 233);
 	border-style: solid;
-	border-radius: 5px 10px;
-	margin: 30 auto;
-	border-color: rgb(138, 73, 202);
-	background-color: rgb(183, 73, 202);
+	border-width: 3px;
 }
 
-#studentNameDisplay {
-	margin-bottom: 15px;
+.sidebar {
+	position: absolute;
+	max-width: max-content;
+	margin-left: -9px;
+	margin-bottom: -9px;
+	padding: 15px;
+	background-color: rgb(202, 63, 202);
+	height: 100%;
 }
 
-.bottomTopLine {
-	border-top-style: double;
-	border-bottom-style: double;
-	border-color: rgb(244, 180, 200)
+/* Seletores de Id */
+#title {
+	margin-bottom: -7px;
 }
 
-#returnButton {
-	margin: 10px;
+#studentList {
+	font-size: smaller;
+}
+
+/* Seletor universal */
+* {
+	font-family: Arial;
 }

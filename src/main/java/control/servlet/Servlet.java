@@ -385,7 +385,7 @@ public class Servlet extends HttpServlet {
 	private void insertFrequency(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 
-		FrequencyStatus status = FrequencyStatus.values(request.getParameter("frequency"))[0];
+		FrequencyStatus status = FrequencyStatus.values()[Integer.parseInt(request.getParameter("frequency"))];
 		Student student = request.getParameter("student");
 		frequencydao.insertFrequency(new Frequency(status, student));
 		response.sendRedirect("list");
@@ -394,7 +394,7 @@ public class Servlet extends HttpServlet {
 	private void updateFrequency(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 
-		FrequencyStatus status = FrequencyStatus.values(request.getParameter("frequency"))[0];
+		FrequencyStatus status = FrequencyStatus.values()[Integer.parseInt(request.getParameter("frequency"))];
 		Student student = request.getParameter("student");
 		frequencydao.updateFrequency(new Frequency(status, student));
 		response.sendRedirect("list");

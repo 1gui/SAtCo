@@ -1,0 +1,107 @@
+<html>
+<head>
+<link rel="stylesheet" href="satcoStyle.css">
+<title>Relatório | SAtCo</title>
+</head>
+<body>
+	<header>
+		<h1 id=>SAtCo</h1>
+		<p>Student Attendance Control</p>
+	</header>
+	<div id="studentList" class="sidebar">
+		<form>
+			<select id="month" name="months" size=1>
+				<option value="january">Janeiro</option>
+				<option value="february">Fevereiro</option>
+				<option value="march">Março</option>
+				<option value="april">Abril</option>
+				<option value="may">Maio</option>
+				<option value="june">Junho</option>
+				<option value="july">Julho</option>
+				<option value="august">Agosto</option>
+				<option value="september">Setembro</option>
+				<option value="october">Outubro</option>
+				<option value="november">Novembro</option>
+				<option value="december">Desembro</option>
+			</select>
+			<input type="submit" id="submitMonth" value="Ir">
+		</form>
+
+		<!-- A tabela a seguir mostra todos os alunos associados a empresa, suas faltas, presenças, e faltas justificadas -->
+		<table id="studentList">
+			<tr>
+				<th>Alunos</th>
+				<th>1</th>
+				<th>2</th>
+				<th>3</th>
+				<th>4</th>
+				<th>5</th>
+				<th>6</th>
+				<th>7</th>
+				<th>8</th>
+				<th>9</th>
+				<th>10</th>
+				<th>11</th>
+				<th>12</th>
+				<th>13</th>
+				<th>14</th>
+				<th>15</th>
+				<th>16</th>
+				<th>17</th>
+				<th>18</th>
+				<th>19</th>
+				<th>20</th>
+				<th>21</th>
+				<th>22</th>
+				<th>23</th>
+				<th>24</th>
+				<th>25</th>
+				<th>26</th>
+				<th>27</th>
+				<th>28</th>
+				<th>29</th>
+				<th>30</th>
+				<th>31</th>
+			</tr>
+
+			<!-- A tr a seguir é somente um exemplo, elas devem ser geradas pelo JavaScript,
+                     com o id do aluno, e trocando "sampletext" pelo nome do aluno  -->
+
+			<tr class="studentRow">
+				<td class="textRow" id="">sampletext</td>
+				<td>F</td>
+				<td>P</td>
+				<td>J</td>
+				<td>F</td>
+				<td>P</td>
+				<td>n/a</td>
+				<td>n/a</td>
+				<td>P</td>
+				<td>J</td>
+				<td>F</td>
+				<td>P</td>
+				<td>J</td>
+				<td>n/a</td>
+				<td>n/a</td>
+				<td>J</td>
+				<td>F</td>
+				<td>P</td>
+				<td>J</td>
+				<td>F</td>
+				<td>P</td>
+				<td>J</td>
+				<td>n/a</td>
+				<td>n/a</td>
+				<td>J</td>
+				<td>F</td>
+				<td>P</td>
+				<td>J</td>
+				<td>F</td>
+				<td>P</td>
+				<td>n/a</td>
+				<td>n/a</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
