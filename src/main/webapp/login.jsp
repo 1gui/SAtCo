@@ -1,7 +1,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="satcoStyle.css">
-<title>Login | SAtCo</title>
+<title>Acesso | SAtCo</title>
 </head>
 <body>
 	<header>
@@ -9,7 +9,7 @@
 		<p id="subtitle">Student Attendance Control</p>
 	</header>
 	<div id="loginBox" class="centralBox">
-		<p class="topBottomDoubleBorder">Informe seu login para entrar.</p>
+		<p class="topBottomDoubleBorder">Informe o seu Login para entrar.</p>
 		<form action="/loginhome" method="post">
 			<label for="user">Usuário:</label><br>
 			<input type="text" id="user" name="name" minlength="5" maxlength="20" required><br>

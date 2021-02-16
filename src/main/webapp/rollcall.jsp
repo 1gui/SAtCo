@@ -1,7 +1,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="satcoStyle.css">
-<title>Chamada | SAtCo</title>
+<title>Professor | SAtCo</title>
 </head>
 <body>
 	<header>

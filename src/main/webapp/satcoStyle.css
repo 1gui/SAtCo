@@ -80,7 +80,38 @@ select {
 }
 
 #studentList {
-	font-size: smaller;
+	font-size: large;
+	margin-left: 10%;
+	margin-right: 10%;
+	align-content: center;
+}
+
+#month {
+	font-size: large;
+}
+
+#errorPageText {
+	border-width: 20px;
+	border-style: double;
+	border-color: red;
+	font-size: xx-large;
+	background-color: #ff9595;
+	padding: 20px;
+	margin: 20px;
+}
+
+#errorText, #errorTitle {
+	border-bottom-style: solid;
+	border-bottom-color: crimson;
+}
+
+#return {
+	font-size: medium;
+	background-color: darkgrey;
+	border-width: 2px;
+	border-radius: 2px;
+	border-style: solid;
+	padding: 3px;
 }
 
 /* Seletor universal */

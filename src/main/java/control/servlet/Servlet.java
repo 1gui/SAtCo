@@ -92,10 +92,6 @@ public class Servlet extends HttpServlet {
 				showteacher(request, response);
 				break;
 
-			case "/showcompany":
-				showCompanyform(request, response);
-				break;
-
 			case "/showupdatecompany":
 				showCompanyupdate(request, response);
 				break;
@@ -112,12 +108,8 @@ public class Servlet extends HttpServlet {
 				updateCompany(request, response);
 				break;
 
-			default:
+			case "/listcompany":
 				listCompany(request, response);
-				break;
-
-			case "/showcourse":
-				showCourseform(request, response);
 				break;
 
 			case "/showupdatecourse":
@@ -136,12 +128,8 @@ public class Servlet extends HttpServlet {
 				updateCourse(request, response);
 				break;
 
-			default:
+			case "/listcoure":
 				listCourse(request, response);
-				break;
-
-			case "/showfrequency":
-				showFrequencyform(request, response);
 				break;
 
 			case "/showupdatefrequency":
@@ -156,12 +144,8 @@ public class Servlet extends HttpServlet {
 				updateFrequency(request, response);
 				break;
 
-			default:
+			case "/list frequency":
 				listFrequency(request, response);
-				break;
-
-			case "/showstudent":
-				showStudentform(request, response);
 				break;
 
 			case "/showupdatestudent":
@@ -188,12 +172,8 @@ public class Servlet extends HttpServlet {
 				updateStudent(request, response);
 				break;
 
-			default:
+			case "/liststundet":
 				listStudent(request, response);
-				break;
-
-			case "/showsubject":
-				showSubjectform(request, response);
 				break;
 
 			case "/showupdatesubject":
@@ -212,12 +192,8 @@ public class Servlet extends HttpServlet {
 				updateSubject(request, response);
 				break;
 
-			default:
+			case "/listsubect":
 				listSubject(request, response);
-				break;
-
-			case "/showteaacher":
-				showTeacherform(request, response);
 				break;
 
 			case "/showupdateteacher":
@@ -236,8 +212,12 @@ public class Servlet extends HttpServlet {
 				updateTeacher(request, response);
 				break;
 
-			default:
+			case "/listteacher":
 				listTeacher(request, response);
+				break;
+
+			default:
+				errorpage(request, response);
 				break;
 
 			}
@@ -246,19 +226,68 @@ public class Servlet extends HttpServlet {
 		}
 	}
 
+	private void showoptions(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("form-options.jsp");
+		dispatcher.forward(request, response);
+
+	}
+
+	private void showcompany(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("form-company.jsp");
+		dispatcher.forward(request, response);
+
+	}
+
+	private void showcourse(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("form-course.jsp");
+		dispatcher.forward(request, response);
+
+	}
+
+	private void showfrequency(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("form-frequency.jsp");
+		dispatcher.forward(request, response);
+
+	}
+
+	private void showstudent(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("form-student.jsp");
+		dispatcher.forward(request, response);
+
+	}
+
+	private void showsubject(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("form-subject.jsp");
+		dispatcher.forward(request, response);
+
+	}
+
+	private void showteacher(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("form-teacher.jsp");
+		dispatcher.forward(request, response);
+
+	}
+
 	private void listCompany(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
 		List<Company> companys = companydao.listCompany();
 		request.setAttribute("companys", companys);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("list-company.jsp");
-		dispatcher.forward(request, response);
-	}
-
-	private void showCompanyform(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("form-company.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -314,13 +343,6 @@ public class Servlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	private void showCourseform(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("form-course.jsp");
-		dispatcher.forward(request, response);
-	}
-
 	private void showCourseupdate(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 
@@ -365,13 +387,6 @@ public class Servlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	private void showFrequencyform(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("form-frequency.jsp");
-		dispatcher.forward(request, response);
-	}
-
 	private void showFrequencyupdate(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 
@@ -399,7 +414,7 @@ public class Servlet extends HttpServlet {
 		frequencydao.updateFrequency(new Frequency(status, student));
 		response.sendRedirect("list");
 	}
-	
+
 	private void listStudent(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
@@ -408,18 +423,18 @@ public class Servlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("list-student.jsp");
 		dispatcher.forward(request, response);
 	}
-	
+
 	private void showStudentcompany(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
 		Long id = Long.parseLong(request.getParameter("id"));
 		Company company = companydao.recoverCompany(new Company(id));
-		List<Student> students = studentdao.listStudentsToCompany(company);
-		request.setAttribute("students", students);
+    List<Student> students = studentdao.listStudentsToCompany(company);
+    request.setAttribute("students", students);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("list-student-company.jsp");
 		dispatcher.forward(request, response);
 	}
-	
+
 	private void showStudentcourse(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
@@ -428,13 +443,6 @@ public class Servlet extends HttpServlet {
 		List<Student> students = studentdao.listStudentsToCourse(course);
 		request.setAttribute("students", students);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("list-student-course.jsp");
-		dispatcher.forward(request, response);
-	}
-
-	private void showStudentform(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("form-student.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -486,13 +494,6 @@ public class Servlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	private void showSubjectform(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("form-subject.jsp");
-		dispatcher.forward(request, response);
-	}
-
 	private void showSubjectupdate(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 
@@ -537,13 +538,6 @@ public class Servlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	private void showTeacherform(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("form-teacher.jsp");
-		dispatcher.forward(request, response);
-	}
-
 	private void showTeacherupdate(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 
@@ -581,5 +575,13 @@ public class Servlet extends HttpServlet {
 		Teacher teacher = teacherdao.recoverTeacher(new Teacher(id));
 		teacherdao.removeTeacher(teacher);
 		response.sendRedirect("list");
+
+	}
+
+	private void errorpage(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+		dispatcher.forward(request, response);
 	}
 }
