@@ -2,6 +2,8 @@ package model.entity.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,8 +12,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import model.entity.company.Company;
-import model.entity.position.Position;
+import model.entity.profile.Profile;
 import model.entity.teacher.Teacher;
+import model.enumeration.Position.PositionEnum;
 
 @Entity
 @Table(name = "user")
@@ -31,11 +34,15 @@ public class User {
 	@OneToOne(fetch = FetchType.LAZY)
 	private Company company;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	private Position position;
+	@Column(name = "Position_enum", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private PositionEnum position;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	private Teacher teacher;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	private Profile profile;
 
 	public User() {
 	}
@@ -44,27 +51,51 @@ public class User {
 		setId(id);
 	}
 
-	public User(String username, String password, Company company, Position position, Teacher teacher) {
+	public User(Long id, String username, String password, Company company, PositionEnum position) {
+		setId(id);
+		setUsername(username);
+		setPassword(password);
+		setPosition(position);
+	}
+
+	public User(String username, String password, Company company) {
 		setUsername(username);
 		setPassword(password);
 		setCompany(company);
 		setPosition(position);
-		setTeacher(teacher);
 	}
 
 
-	public User(Long id, String username, String password, Teacher teacher) {
-  }
-    
-	public User(Long id, String username, String password, Company company, Position position,
-			Teacher teacher) {
-
+	public User(Long id, String username, String password, Teacher teacher, PositionEnum position) {
 		setId(id);
 		setUsername(username);
 		setPassword(password);
 		setTeacher(teacher);
+		setPosition(position);
 	}
 
+	public User(String username, String password, Teacher teacher, PositionEnum position) {
+		setUsername(username);
+		setPassword(password);
+		setTeacher(teacher);
+		setPosition(position);
+	}
+
+	public User(Long id, String username, String password, Profile profile, PositionEnum position) {
+		setId(id);
+		setUsername(username);
+		setPassword(password);
+		setProfile(profile);
+		setPosition(position);
+	}
+
+	public User(String username, String password, Profile profile, PositionEnum position) {
+		setUsername(username);
+		setPassword(password);
+		setProfile(profile);
+		setPosition(position);
+	}
+    
 	public Long getId() {
 		return id;
 	}
@@ -81,9 +112,6 @@ public class User {
 		return company;
 	}
 
-	public Position getPosition() {
-		return position;
-	}
 
 	public void setId(Long id) {
 		this.id = id;
@@ -101,16 +129,24 @@ public class User {
 		this.company = company;
 	}
 
-	public void setPosition(Position position) {
-		this.position = position;
-	}
-
 	public Teacher getTeacher() {
 		return teacher;
 	}
 
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
+	}
+
+	public Profile getProfile() {
+		return profile;
+	}
+
+	public void setPosition(PositionEnum position) {
+		this.position = position;
+	}
+
+	private void setProfile(Profile profile) {
+		this.profile = profile;
 	}
 
 }
