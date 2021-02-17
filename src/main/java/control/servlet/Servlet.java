@@ -128,7 +128,7 @@ public class Servlet extends HttpServlet {
 				updateCourse(request, response);
 				break;
 
-			case "/listcoure":
+			case "/listcourse":
 				listCourse(request, response);
 				break;
 
@@ -144,7 +144,7 @@ public class Servlet extends HttpServlet {
 				updateFrequency(request, response);
 				break;
 
-			case "/list frequency":
+			case "/listfrequency":
 				listFrequency(request, response);
 				break;
 
