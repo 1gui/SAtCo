@@ -6,15 +6,7 @@
 <title>Cadastro de Compania</title>
 </head>
 <body>
-	<header>
-		<nav>
-			<ul>
-				<li><a href="<%=request.getContextPath()%>/listCompany">Listar
-						Companias</a></li>
-			</ul>
-		</nav>
-	</header>
-	<br>
+
 	<div>
 		<div>
 			<div>
