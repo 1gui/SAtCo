@@ -172,7 +172,7 @@ public class Servlet extends HttpServlet {
 				updateStudent(request, response);
 				break;
 
-			case "/liststundet":
+			case "/liststundent":
 				listStudent(request, response);
 				break;
 
