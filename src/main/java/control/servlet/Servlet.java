@@ -172,6 +172,8 @@ public class Servlet extends HttpServlet {
 				updateStudent(request, response);
 				break;
 
+			case "/liststundent":
+
 			case "/liststudent":
 				listStudent(request, response);
 				break;
@@ -229,7 +231,7 @@ public class Servlet extends HttpServlet {
 	private void showoptions(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("form-options.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("list-options.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -237,7 +239,7 @@ public class Servlet extends HttpServlet {
 	private void showcompany(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("form-company.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("list-company.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -245,7 +247,7 @@ public class Servlet extends HttpServlet {
 	private void showcourse(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("form-course.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("list-course.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -253,7 +255,7 @@ public class Servlet extends HttpServlet {
 	private void showfrequency(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("form-frequency.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("list-frequency.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -261,7 +263,7 @@ public class Servlet extends HttpServlet {
 	private void showstudent(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("form-student.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("list-student.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -269,7 +271,7 @@ public class Servlet extends HttpServlet {
 	private void showsubject(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("form-subject.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("list-subject.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -277,7 +279,7 @@ public class Servlet extends HttpServlet {
 	private void showteacher(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("form-teacher.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("list-teacher.jsp");
 		dispatcher.forward(request, response);
 
 	}
