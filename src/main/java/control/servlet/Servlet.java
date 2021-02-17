@@ -128,7 +128,7 @@ public class Servlet extends HttpServlet {
 				updateCourse(request, response);
 				break;
 
-			case "/listcoure":
+			case "/listcourse":
 				listCourse(request, response);
 				break;
 
@@ -173,6 +173,8 @@ public class Servlet extends HttpServlet {
 				break;
 
 			case "/liststundent":
+
+			case "/liststudent":
 				listStudent(request, response);
 				break;
 
@@ -310,7 +312,7 @@ public class Servlet extends HttpServlet {
 		String address = request.getParameter("address");
 		String phone = request.getParameter("phone");
 		companydao.insertCompany(new Company(name, cnpj, email, address, phone));
-		response.sendRedirect("list");
+		response.sendRedirect("list-company.jsp");
 	}
 
 	private void updateCompany(HttpServletRequest request, HttpServletResponse response)
@@ -322,7 +324,7 @@ public class Servlet extends HttpServlet {
 		String address = request.getParameter("address");
 		String phone = request.getParameter("phone");
 		companydao.updateCompany(new Company(name, cnpj, email, address, phone));
-		response.sendRedirect("list");
+		response.sendRedirect("list-company.jsp");
 	}
 
 	private void removeCompany(HttpServletRequest request, HttpServletResponse response)
@@ -331,7 +333,7 @@ public class Servlet extends HttpServlet {
 		Long id = Long.parseLong(request.getParameter("id"));
 		Company company = companydao.recoverCompany(new Company(id));
 		companydao.removeCompany(company);
-		response.sendRedirect("list");
+		response.sendRedirect("list-company.jsp");
 	}
 
 	private void listCourse(HttpServletRequest request, HttpServletResponse response)
