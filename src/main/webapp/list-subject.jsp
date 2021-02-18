@@ -13,11 +13,8 @@
 	<br>
 	<div>
 		<div>
-			<h3>Lista de Opções</h3>
+			<h3>Lista De Opções</h3>
 			<hr>
-			<div>
-				<a href="<%=request.getContextPath()%>/subject">Adicionar matéria</a>
-			</div>
 			<br>
 			<table>
 				<thead>
@@ -30,7 +27,7 @@
 						<tr>
 							<td><c:out value="${subject.name}"/></td>
 							<td><a href="/updatesubject?id=<c:out value='${subject.id}'/>">Editar</a>
-								<a href="/removesubject?id=<c:out value='${subject.id}'/>">Deletar</a></td>
+								<a href="/removesubject?id=<c:out value='${subject.id}'/>">Apagar</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

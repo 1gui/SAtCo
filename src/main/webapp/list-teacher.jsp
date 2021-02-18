@@ -13,11 +13,8 @@
 	<br>
 	<div>
 		<div>
-			<h3>Lista Opções</h3>
+			<h3>Lista De Opções</h3>
 			<hr>
-			<div>
-				<a href="<%=request.getContextPath()%>/teacher">Adicionar professor</a>
-			</div>
 			<br>
 			<table>
 				<thead>
@@ -30,11 +27,11 @@
 				<tbody>
 					<c:forEach var="teacher" items="${teachers}">
 						<tr>
-							<td><c:out value="${teacher.name}" /></td>
-							<td><c:out value="${teacher.cpf}" /></td>
-							<td><c:out value="${teacher.email}" /></td>
+							<td><c:out value="${teacher.name}"/></td>
+							<td><c:out value="${teacher.cpf}"/></td>
+							<td><c:out value="${teacher.email}"/></td>
 							<td><a href="/updateteacher?id=<c:out value='${teacher.id}'/>">Editar</a>
-								<a href="/removeteacher?id=<c:out value='${teacher.id}'/>">Deletar</a></td>
+								<a href="/removeteacher?id=<c:out value='${teacher.id}'/>">Apagar</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
