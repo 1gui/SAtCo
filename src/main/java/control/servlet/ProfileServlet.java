@@ -59,7 +59,7 @@ public class ProfileServlet {
 				session.setAttribute("Company", user);
 				request.setAttribute("userName", user);
 
-				request.getRequestDispatcher("/JSP/medico.jsp").forward(request, response);
+				request.getRequestDispatcher("/JSP/company.jsp").forward(request, response);
 				
 			} else {
 				
