@@ -47,12 +47,6 @@
 				</fieldset>
 				<button type="submit">Salvar</button>
 				</form>
-				<c:if test="${company != null}">
-					<input type="hidden" name="id" value="<c:out value='${company.id}'/>"/>
-					<form action="removecompany" method="post">
-						<button type="submit">Apagar</button>
-					</form>
-				</c:if>
 			</div>
 		</div>
 	</div>
