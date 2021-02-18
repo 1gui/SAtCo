@@ -66,7 +66,7 @@ public class ProfileServlet {
 				System.out.println("Error message = " + user);
 				request.setAttribute("errMessage", user);
 
-				request.getRequestDispatcher("/JSP/Login.jsp").forward(request, response);
+				request.getRequestDispatcher("/JSP/login.jsp").forward(request, response);
 			}
 			
 		} catch (IOException e1) {
