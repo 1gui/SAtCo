@@ -22,6 +22,7 @@
 						<th>Nome</th>
 						<th>CPF</th>
 						<th>E-mail</th>
+						<th>Opções</th>
 					</tr>
 				</thead>
 				<tbody>
