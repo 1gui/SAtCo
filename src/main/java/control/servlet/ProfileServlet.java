@@ -56,7 +56,7 @@ public class ProfileServlet {
 				System.out.println("Page Company.");
 
 				HttpSession session = request.getSession();
-				session.setAttribute("Medico", user);
+				session.setAttribute("Company", user);
 				request.setAttribute("userName", user);
 
 				request.getRequestDispatcher("/JSP/medico.jsp").forward(request, response);
