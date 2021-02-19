@@ -4,10 +4,6 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.persistence.criteria.CriteriaBuilder.Case;
-
-import org.hibernate.internal.build.AllowSysOut;
-
 import model.dao.company.CompanyDAO;
 import model.dao.company.CompanyDAOImpl;
 import model.dao.course.CourseDAO;
@@ -199,6 +195,110 @@ public class Main {
 				break;
 
 			case COMPANY:
+				while (menuS != MenuSecondary.EXIT) {
+					System.out.println("Empresa - Opções\n[0-Cadastrar]\n[1-Editar]\n[2-Apagar]\n[3-Sair]");
+					try {
+						menuS = MenuSecondary.values()[Integer.parseInt(sc.next())];
+					} catch (InputMismatchException ime) {
+						System.out.println("Digite apenas numeros inteiros nos menus.");
+					} catch (ArrayIndexOutOfBoundsException aiobe) {
+						System.out.println("Digite apenas os numeros do display.");
+					}
+
+					switch (menuS) {
+
+					case REGISTER:
+
+						try {
+							System.out.println("\n\nDigite o nome da empresa:");
+							String name = sc.next();
+							System.out.println("Digite o CNPJ da empresa:");
+							String cnpj = sc.next();
+							System.out.println("Digite o email da empresa:");
+							String email = sc.next();
+							System.out.println("Digite o endereço da empresa:");
+							String address = sc.next();
+							System.out.println("Digite o telefone da empresa:");
+							String phone = sc.next();
+							System.out.println("Buscando Turmas..");
+							List<Company> companys = companyDAO.listCompany();
+							for (int i = 0; i < companys.size(); i++) {
+								System.out.println(i + " " + companys.get(i).getName());
+							}
+							companyDAO.insertCompany(new Company(name, cnpj, email, address, phone));
+							System.out.println("Empresa inserido.");
+
+						} catch (InputMismatchException ime) {
+							System.out.println("Algo errado foi digitado!");
+						} catch (ArrayIndexOutOfBoundsException aiobe) {
+							System.out.println("Um numero fora de limites foi digitado.");
+						} catch (NullPointerException npe) {
+							System.out.println("Algo estava vazio no sistema e não pode ser encontrado.");
+						}
+
+						break;
+						
+					case EDIT:
+						try {
+							System.out.println("Buscando Empresas...");
+							List<Company> companys = companyDAO.listCompany();
+							for (int i = 0; i < companys.size(); i++) {
+								System.out.println(i + " " + companys.get(i).getName());
+							}
+							System.out.println("Selecione uma empresa para editar");
+							int numeroEmpresa = sc.nextInt();
+							sc.next();
+							Company company = companyDAO.recoverCompany(companys.get(numeroEmpresa));
+
+							System.out.println(
+									"\n\n O nome atual da empresa é:" + company.getName() + ". Digite o nome da empresa:");
+							String name = sc.next();
+							System.out
+									.println("O CNPJ atual da empresa é:" + company.getCnpj() + ". Digite o CNPJ da empresa:");
+							String cnpj = sc.next();
+							System.out.println(
+									"O e-mail atual da empresa é:" + company.getEmail() + ". Digite o e-mail da empresa:");
+							String email = sc.next();
+							System.out.println(
+									"O endereço atual da empresa é:" + company.getAddress() + ". Digite o endereço da empresa:");
+							String address = sc.next();
+							System.out.println(
+									"O telefone atual da empresa é:" + company.getPhone() + ". Digite o telefone da empresa:");
+							String phone = sc.next();
+						
+						} catch (InputMismatchException ime) {
+							System.out.println("Algo errado foi digitado!");
+						} catch (ArrayIndexOutOfBoundsException aiobe) {
+							System.out.println("Um numero fora de limites foi digitado.");
+						} catch (NullPointerException npe) {
+							System.out.println("Algo estava vazio no sistema e não pode ser encontrado.");
+						}
+
+						break;
+						
+					case DELETE:
+						try {
+						System.out.println("Buscando empresas...");
+						List<Company> companys = companyDAO.listCompany();
+						for (int i = 0; i < companys.size(); i++) {
+							System.out.println(i + " " + companys.get(i).getName());
+						}
+						System.out.println("Selecione uma empresa para remover");
+						int numeroEmpresa = sc.nextInt();
+						sc.next();
+						Company company = companyDAO.recoverCompany(companys.get(numeroEmpresa));
+						companyDAO.removeCompany(company);
+						} catch (InputMismatchException ime) {
+							System.out.println("Algo errado foi digitado!");
+						} catch (ArrayIndexOutOfBoundsException aiobe) {
+							System.out.println("Um numero fora de limites foi digitado.");
+						} catch (NullPointerException npe) {
+							System.out.println("Algo estava vazio no sistema e não pode ser encontrado.");
+						}
+						break;
+
+					}
+				}
 				break;
 
 			case SUBJECT:
@@ -273,3 +373,5 @@ public class Main {
 		System.out.println("Execucao terminada.");
 	}
 }
+	}
+	}
