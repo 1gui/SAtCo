@@ -1,7 +1,9 @@
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%><html>
 <head>
 <link rel="stylesheet" href="satcoStyle.css">
-<title>Instituição | SAtCo</title>
+<title>Instituiï¿½ï¿½o | SAtCo</title>
 </head>
 <body>
 	<header>
@@ -9,28 +11,28 @@
 		<p id="subtitle">Student Attendance Control</p>
 	</header>
 	<div id="" class="sidebar">
-		<label>Selecione a opção desejada</label><br><br>
+		<label>Selecione a opï¿½ï¿½o desejada</label><br><br>
 		<form id="">
 			<label>Justificar falta</label><br>
 			<select id="listCourse">
 				<option value="idCourse1">TURMA1</option>
 				<option value="idCourse2">TURMA2</option>
-				<!-- (2.1) Fazer uma lista de turmas no "options" após apertar na setinha do options -->
+				<!-- (2.1) Fazer uma lista de turmas no "options" apï¿½s apertar na setinha do options -->
 			</select><br>
 			<input type="submit" id="justify" value="Ir"><br>
-			<!-- (2.2) após selecionar a turma e apertar o botao, abrir na tela central a lista de alunos, da respectiva turma, com nome e status da frequencia (se o status do aluno for P (presença) não dar permissão para edição do mesmo -->
+			<!-- (2.2) apï¿½s selecionar a turma e apertar o botao, abrir na tela central a lista de alunos, da respectiva turma, com nome e status da frequencia (se o status do aluno for P (presenï¿½a) nï¿½o dar permissï¿½o para ediï¿½ï¿½o do mesmo -->
 		</form>
 		<form>
 			<label>Cadastrar</label><br>
 			<select id="registrerSTC">
 				<option value="student">Aluno</option>
 				<option value="company">Empresa</option>
-				<option value="subject">Matéria</option>
+				<option value="subject">Matï¿½ria</option>
 				<option value="teacher">Professor</option>
 				<option value="course">Turma</option>
 			</select><br>
 			<input type="submit" id="register" value="Ir"><br>
-			<!-- (2.4) Após apertar botao, carregar na tela central os campos necessarios para o cadastro da respectiva escolha do "select" -->
+			<!-- (2.4) Apï¿½s apertar botao, carregar na tela central os campos necessarios para o cadastro da respectiva escolha do "select" -->
 		</form>
 		<form>
 			<label>Listar</label><br>
@@ -40,7 +42,7 @@
 				<option value="teacher">Professor</option>
 			</select><br>
 			<input type="submit" id="list" value="Ir"><br>
-			<!-- (2.5) Após apertar botao, carregar na tela central uma lista da respectiva escolha do "select" diretamente do banco -->
+			<!-- (2.5) Apï¿½s apertar botao, carregar na tela central uma lista da respectiva escolha do "select" diretamente do banco -->
 		</form>
 		<form>
 			<label>Editar</label><br>
@@ -50,7 +52,7 @@
 				<option value="teacher">Professor</option>
 			</select><br>
 			<input type="submit" id="edit" value="Ir"><br>
-			<!-- (2.6) Após apertar botao, carregar na tela central uma lista da respectiva escolha do "select" e a opção de editar para mudar informações do banco -->
+			<!-- (2.6) Apï¿½s apertar botao, carregar na tela central uma lista da respectiva escolha do "select" e a opï¿½ï¿½o de editar para mudar informaï¿½ï¿½es do banco -->
 		</form>
 		<form>
 			<label>Apagar</label><br>
@@ -60,7 +62,7 @@
 				<option value="teacher">Professor</option>
 			</select><br>
 			<input type="submit" id="delete" value="Ir"><br>
-			<!-- (2.7) Após apertar o botao, carregar na tela central uma lista da respectiva escolha do "select" e mostrar as opcoes de deletar -->
+			<!-- (2.7) Apï¿½s apertar o botao, carregar na tela central uma lista da respectiva escolha do "select" e mostrar as opcoes de deletar -->
 		</form>
 	</div>
 </body>
