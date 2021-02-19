@@ -9,7 +9,6 @@
 <body>
 	<header>
 		<h1 id="title">SAtCo</h1>
-		<p id="subtitle">Student Attendance Control</p>
 	</header>
 	<br>
 	<div>
