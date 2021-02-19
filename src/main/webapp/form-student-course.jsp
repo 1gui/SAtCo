@@ -8,7 +8,7 @@
 </head>
 <body>
 	<fieldset>
-	<legend><strong>Lista De Alunos</strong<legend>
+	<legend><strong>Lista De Alunos</strong><legend>
 	<table align ="center" border="1px" width"80%">
 	<tr>
 		<th>Classe</th>
