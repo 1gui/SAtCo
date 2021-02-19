@@ -6,12 +6,11 @@
 <body>
 	<header>
 		<h1 id="title">SAtCo</h1>
-		<p id="subtitle">Student Attendance Control</p>
 	</header>
 	<div id="loginBox" class="centralBox">
 		<p class="topBottomDoubleBorder">Informe o seu Login para entrar.</p>
 		<form action="/loginhome" method="post">
-			<label for="user">Usuário:</label><br>
+			<label for="user">Usuï¿½rio:</label><br>
 			<input type="text" id="user" name="name" minlength="5" maxlength="20" required><br>
 			<label for="password">Senha:</label><br>
 			<input type="password"id="password" name="password" minlength="5" maxlength="20" required><br><br>
