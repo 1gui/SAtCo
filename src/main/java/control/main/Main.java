@@ -4,6 +4,8 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.persistence.criteria.CriteriaBuilder.Case;
+
 import org.hibernate.internal.build.AllowSysOut;
 
 import model.dao.company.CompanyDAO;
@@ -21,6 +23,7 @@ import model.dao.teacher.TeacherDAOImpl;
 import model.entity.company.Company;
 import model.entity.course.Course;
 import model.entity.student.Student;
+import model.entity.subject.Subject;
 import model.enumeration.primary.MenuPrimary;
 import model.enumeration.secondary.MenuSecondary;
 
@@ -65,8 +68,10 @@ public class Main {
 						menuS = MenuSecondary.values()[Integer.parseInt(sc.next())];
 					} catch (InputMismatchException ime) {
 						System.out.println("Digite apenas numeros inteiros nos menus.");
+						menuP = MenuPrimary.INVALID;
 					} catch (ArrayIndexOutOfBoundsException aiobe) {
 						System.out.println("Digite apenas os numeros do display.");
+						menuP = MenuPrimary.INVALID;
 					}
 
 					switch (menuS) {
@@ -119,9 +124,9 @@ public class Main {
 								System.out.println(i + " " + students.get(i).getName());
 							}
 							System.out.println("Selecione um aluno para editar");
-							int numeroAluno = sc.nextInt();
+							int numberStudent = sc.nextInt();
 							sc.next();
-							Student student = studentDAO.recoverStudent(students.get(numeroAluno));
+							Student student = studentDAO.recoverStudent(students.get(numberStudent));
 
 							System.out.println(
 									"\n\n O nome atual do aluno é:" + student.getName() + ". Digite o nome do aluno:");
@@ -167,16 +172,16 @@ public class Main {
 
 					case DELETE:
 						try {
-						System.out.println("Buscando alunos...");
-						List<Student> students = studentDAO.listStudent();
-						for (int i = 0; i < students.size(); i++) {
-							System.out.println(i + " " + students.get(i).getName());
-						}
-						System.out.println("Selecione um aluno para remover");
-						int numeroAluno = sc.nextInt();
-						sc.next();
-						Student student = studentDAO.recoverStudent(students.get(numeroAluno));
-						studentDAO.recoverStudent(student);
+							System.out.println("Buscando alunos...");
+							List<Student> students = studentDAO.listStudent();
+							for (int i = 0; i < students.size(); i++) {
+								System.out.println(i + " " + students.get(i).getName());
+							}
+							System.out.println("Selecione um aluno para remover");
+							int numeroAluno = sc.nextInt();
+							sc.next();
+							Student student = studentDAO.recoverStudent(students.get(numeroAluno));
+							studentDAO.removeStudent(student);
 						} catch (InputMismatchException ime) {
 							System.out.println("Algo errado foi digitado!");
 						} catch (ArrayIndexOutOfBoundsException aiobe) {
@@ -197,6 +202,41 @@ public class Main {
 				break;
 
 			case SUBJECT:
+
+				while (menuS != MenuSecondary.EXIT) {
+					while (menuS != MenuSecondary.EXIT) {
+						System.out.println("Materia - Opções\n[0-Cadastrar]\n[1-Editar]\n[2-Apagar]\n[3-Sair]");
+						try {
+							menuS = MenuSecondary.values()[Integer.parseInt(sc.next())];
+						} catch (InputMismatchException ime) {
+							System.out.println("Digite apenas numeros inteiros nos menus.");
+							menuP = MenuPrimary.INVALID;
+						} catch (ArrayIndexOutOfBoundsException aiobe) {
+							System.out.println("Digite apenas os numeros do display.");
+							menuP = MenuPrimary.INVALID;
+						}
+					}
+					
+					try {
+						System.out.println("Buscando alunos...");
+						List<Subject> subjects = subjectDAO.listSubject();
+						for (int i = 0; i < subjects.size(); i++) {
+							System.out.println(i + " " + subjects.get(i).getName());
+						}
+						System.out.println("Selecione um aluno para remover");
+						int numeroAluno = sc.nextInt();
+						sc.next();
+						Subject subject = subjectDAO.recoverSubject(subjects.get(numeroAluno));
+						subjectDAO.removeSubject(subject);
+					} catch (InputMismatchException ime) {
+						System.out.println("Algo errado foi digitado!");
+					} catch (ArrayIndexOutOfBoundsException aiobe) {
+						System.out.println("Um numero fora de limites foi digitado.");
+					} catch (NullPointerException npe) {
+						System.out.println("Algo estava vazio no sistema e não pode ser encontrado.");
+					}
+					
+				}
 				break;
 
 			case TEACHER:
