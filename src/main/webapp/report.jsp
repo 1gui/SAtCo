@@ -6,14 +6,13 @@
 <body>
 	<header>
 		<h1 id=>SAtCo</h1>
-		<p>Student Attendance Control</p>
 	</header>
 	<div id="studentList" class="sidebar">
 		<form>
 			<select id="month" name="months" size=1>
 				<option value="january">Janeiro</option>
 				<option value="february">Fevereiro</option>
-				<option value="march">Março</option>
+				<option value="march">Marï¿½o</option>
 				<option value="april">Abril</option>
 				<option value="may">Maio</option>
 				<option value="june">Junho</option>
@@ -25,7 +24,7 @@
 				<option value="december">Dezembro</option>
 			</select> <input type="submit" id="submitMonth" value="Ir">
 		</form>
-		<!-- A tabela a seguir mostra todos os alunos associados a empresa, suas faltas, presenças, e faltas justificadas -->
+		<!-- A tabela a seguir mostra todos os alunos associados a empresa, suas faltas, presenï¿½as, e faltas justificadas -->
 		<table id="studentFrequencyList">
 			<tr>
 				<th>Alunos</th>
@@ -61,10 +60,10 @@
 				<th>30</th>
 				<th>31</th>
 			</tr>
-			<!-- A tr a seguir é somente um exemplo, elas devem ser geradas pelo JavaScript,
+			<!-- A tr a seguir ï¿½ somente um exemplo, elas devem ser geradas pelo JavaScript,
                  com o id do aluno, e trocando "sampletext" pelo nome do aluno  -->
-			<!-- F significa "Falta", P significa "Presença", J significa falta "Justificada" 
-                e n/a significa "Não Aplicavel" -->
+			<!-- F significa "Falta", P significa "Presenï¿½a", J significa falta "Justificada" 
+                e n/a significa "Nï¿½o Aplicavel" -->
 			<tr class="studentRow" name="">
 				<td class="textRow" id="">sampletext</td>
 				<td>F</td>
