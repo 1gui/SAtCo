@@ -18,20 +18,15 @@
 			<table>
 				<thead>
 					<tr>
-						<th>Nome</th>
-						<th>CPF</th>
-						<th>E-mail</th>
+						<th>Classes</th>
 						<th>Opções</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="student" items="${students}">
+					<c:forEach var="course" items="${courses}">
 						<tr>
-							<td><c:out value="${student.name}"/></td>
-							<td><c:out value="${student.cpf}"/></td>
-							<td><c:out value="${student.email}"/></td>
-							<td><a href="/updatestudent?id=<c:out value='${student.id}'/>">Editar</a>
-								<a href="/removestudent?id=<c:out value='${student.id}'/>">Apagar</a></td>
+							<td><c:out value="${course.name}"/></td>
+							<td><a href="/showcoursestudent?id=<c:out value='${course.id}'/>">Listar</a>
 						</tr>
 					</c:forEach>
 				</tbody>

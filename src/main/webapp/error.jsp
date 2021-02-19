@@ -6,9 +6,8 @@
 <body>
 	<div id="errorPageText">
 		<h1 id="errorTitle">ERRO</h1>
-		<p id="errorText">A página que você estava tentando acessar não
+		<p id="errorText">A pagina que voce estava tentando acessar nao
 			pode ser encontrada.</p>
-		<a id="return" href="login.jsp">Retornar a página inicial</a>
 	</div>
 </body>
 </html>
