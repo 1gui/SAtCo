@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <link rel="stylesheet" href="satcoStyle.css">
@@ -7,37 +9,34 @@
 	<header>
 		<h1 id=>SAtCo</h1>
 		<p>Lista De Chamada</p>
-	</header>
-	<div id="teacherOptions" class="sidebar">
-		
+	</header>		
 		<h4>Turmas:</h4>
-		<form>
+		<form action="/rollcall?id=<c:out value='${course.id}'/>">
 			<select id="course" name="course">
-				<option id="">Turma A</option>
-				<option id="">Turma B</option>
-			</select> <input type="submit" value="Selecionar">
+				<c:forEach var="course" items="${courses}" varStatus="id">
+				<option><c:out value="${course.name}"/></option>
+				</c:forEach>
+			</select>
+			<input type="submit" value="Selecionar"><br>
 		</form>
-	</div>
-	
-	<div name="studentAttendanceTable" class="centralBox">	
-		<form>
-			<table name="courseStudents" id="">
+		<form action="/insertfrequency">
+			<table>
 				<tr>
 					<th>Aluno</th>
-					<th>Presença</th>
+					<th>Presenca</th>
 				</tr>
+				<c:forEach var="student" items="${students}">
 				<tr>
 					<td>
-						<p name="studentName" id="">Anderleyson soares da silva
-							almeida campos de souza</p>
+						<p><c:out value="${student.name}"/></p>
 					</td>
 					<td>
-					<input type="checkbox" id="">
+						<input type="checkbox" id="">
 					</td>
 				</tr>
+				</c:forEach>
 			</table><br>
 			<input type="submit" value="Registrar chamada">
 		</form>
-	</div>
 </body>
 </html>

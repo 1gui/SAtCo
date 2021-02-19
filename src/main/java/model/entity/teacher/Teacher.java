@@ -12,12 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import model.entity.course.Course;
 import model.entity.subject.Subject;
-import model.entity.user.User;
 
 @Entity
 @Table(name = "teacher")
@@ -45,9 +43,6 @@ public class Teacher {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_course")
 	private List<Course> courses = new ArrayList<Course>();
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	private User user;
 
 	public Teacher() {
 	}
@@ -129,15 +124,4 @@ public class Teacher {
 	public List<Subject> getSubjects() {
 		return subjects;
 	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-
-
 }
