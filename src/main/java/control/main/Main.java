@@ -20,6 +20,7 @@ import model.entity.company.Company;
 import model.entity.course.Course;
 import model.entity.student.Student;
 import model.entity.subject.Subject;
+import model.entity.teacher.Teacher;
 import model.enumeration.primary.MenuPrimary;
 import model.enumeration.secondary.MenuSecondary;
 
@@ -387,38 +388,106 @@ public class Main {
 			case SUBJECT:
 
 				while (menuS != MenuSecondary.EXIT) {
-					while (menuS != MenuSecondary.EXIT) {
-						System.out.println("Materia - Opções\n[0-Cadastrar]\n[1-Editar]\n[2-Apagar]\n[3-Sair]");
-						try {
-							menuS = MenuSecondary.values()[Integer.parseInt(sc.next())];
-						} catch (InputMismatchException ime) {
-							System.out.println("Digite apenas numeros inteiros nos menus.");
-							menuP = MenuPrimary.INVALID;
-						} catch (ArrayIndexOutOfBoundsException aiobe) {
-							System.out.println("Digite apenas os numeros do display.");
-							menuP = MenuPrimary.INVALID;
-						}
-					}
-					
+					System.out.println("Materia - Opções\n[0-Cadastrar]\n[1-Editar]\n[2-Apagar]\n[3-Sair]");
 					try {
-						System.out.println("Buscando alunos...");
-						List<Subject> subjects = subjectDAO.listSubject();
-						for (int i = 0; i < subjects.size(); i++) {
-							System.out.println(i + " " + subjects.get(i).getName());
-						}
-						System.out.println("Selecione um aluno para remover");
-						int numeroAluno = sc.nextInt();
-						sc.next();
-						Subject subject = subjectDAO.recoverSubject(subjects.get(numeroAluno));
-						subjectDAO.removeSubject(subject);
+						menuS = MenuSecondary.values()[Integer.parseInt(sc.next())];
 					} catch (InputMismatchException ime) {
-						System.out.println("Algo errado foi digitado!");
+						System.out.println("Digite apenas numeros inteiros nos menus.");
+						menuP = MenuPrimary.INVALID;
 					} catch (ArrayIndexOutOfBoundsException aiobe) {
-						System.out.println("Um numero fora de limites foi digitado.");
-					} catch (NullPointerException npe) {
-						System.out.println("Algo estava vazio no sistema e não pode ser encontrado.");
+						System.out.println("Digite apenas os numeros do display.");
+						menuP = MenuPrimary.INVALID;
 					}
-					
+
+					switch (menuS) {
+
+					case REGISTER:
+
+						try {
+							System.out.println("\n\nDigite o nome da materia:");
+							String name = sc.next();
+							System.out.println("Buscando professores...");
+							List<Teacher> teachers = teacherDAO.listTeacher();
+							for (int i = 0; i < teachers.size(); i++) {
+								System.out.println(i + " " + teachers.get(i).getName());
+							}
+							System.out.println("Digite o numero da turma do aluno:");
+							int numberTeacher = sc.nextInt();
+							sc.next();
+							Teacher teacher = teachers.get(numberTeacher);
+							subjectDAO.insertSubject(new Subject(name, teacher));
+							System.out.println("Materia inserida.");
+
+						} catch (InputMismatchException ime) {
+							System.out.println("Algo errado foi digitado!");
+						} catch (ArrayIndexOutOfBoundsException aiobe) {
+							System.out.println("Um numero fora de limites foi digitado.");
+						} catch (NullPointerException npe) {
+							System.out.println("Algo estava vazio no sistema e não pode ser encontrado.");
+						}
+
+						break;
+
+					case EDIT:
+						try {
+							System.out.println("Buscando materias...");
+							List<Subject> subjects = subjectDAO.listSubject();
+							for (int i = 0; i < subjects.size(); i++) {
+								System.out.println(i + " " + subjects.get(i).getName());
+							}
+							System.out.println("Selecione uma materia para editar");
+							int numberSubject = sc.nextInt();
+							sc.next();
+							Subject subject = subjectDAO.recoverSubject(subjects.get(numberSubject));
+
+							System.out.println(
+									"\n\n O nome atual da materia é:" + subject.getName() + ". Digite o nome do aluno:");
+							String name = sc.next();
+							System.out.println(
+									"O professor atual da materia é" + subject.getTeacher().getName() + ". Buscando professores...");
+							List<Teacher> teachers = teacherDAO.listTeacher();
+							for (int i = 0; i < teachers.size(); i++) {
+								System.out.println(i + " " + teachers.get(i).getName());
+							}
+							System.out.println("Digite o numero do professor da materia:");
+							int numberTeacher = sc.nextInt();
+							sc.next();
+							Teacher teacher = teachers.get(numberTeacher);
+							subjectDAO.updateSubject(new Subject(subject.getId(), name, teacher));
+							System.out.println("Materia atualizada.");
+
+						} catch (InputMismatchException ime) {
+							System.out.println("Algo errado foi digitado!");
+						} catch (ArrayIndexOutOfBoundsException aiobe) {
+							System.out.println("Um numero fora de limites foi digitado.");
+						} catch (NullPointerException npe) {
+							System.out.println("Algo estava vazio no sistema e não pode ser encontrado.");
+						}
+
+						break;
+
+					case DELETE:
+						try {
+							System.out.println("Buscando materias...");
+							List<Subject> subjects = subjectDAO.listSubject();
+							for (int i = 0; i < subjects.size(); i++) {
+								System.out.println(i + " " + subjects.get(i).getName());
+							}
+							System.out.println("Selecione uma materia para remover");
+							int numberSubject = sc.nextInt();
+							sc.next();
+							Subject subject = subjectDAO.recoverSubject(subjects.get(numberSubject));
+							subjectDAO.removeSubject(subject);
+						} catch (InputMismatchException ime) {
+							System.out.println("Algo errado foi digitado!");
+						} catch (ArrayIndexOutOfBoundsException aiobe) {
+							System.out.println("Um numero fora de limites foi digitado.");
+						} catch (NullPointerException npe) {
+							System.out.println("Algo estava vazio no sistema e não pode ser encontrado.");
+						}
+						break;
+
+					}
 				}
 				break;
 
@@ -430,9 +499,6 @@ public class Main {
 
 			case REPORT:
 				break;
-
-			case EXIT:
-				;
 
 			default:
 				break;
