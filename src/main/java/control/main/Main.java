@@ -18,9 +18,11 @@ import model.dao.teacher.TeacherDAO;
 import model.dao.teacher.TeacherDAOImpl;
 import model.entity.company.Company;
 import model.entity.course.Course;
+import model.entity.frequency.Frequency;
 import model.entity.student.Student;
 import model.entity.subject.Subject;
 import model.entity.teacher.Teacher;
+import model.enumeration.frequency.FrequencyStatus;
 import model.enumeration.primary.MenuPrimary;
 import model.enumeration.secondary.MenuSecondary;
 
@@ -602,9 +604,58 @@ public class Main {
 				break;
 
 			case ROLLCALL:
+				try { 
+				System.out.println("Buscando turmas:");
+				List<Course> courses = courseDAO.listCourse();
+				for (int i = 0; i < courses.size(); i++) {
+					System.out.println(i + " " + courses.get(i).getName());
+				}
+				System.out.println("Selecione uma turma para a chamada:");
+				int numberCourse = sc.nextInt();
+				sc.next();
+				Course course = courseDAO.recoverCourse(courses.get(numberCourse));
+				System.out.println("Buscando alunos da turma "+ course.getName() +"...");
+				List<Student> students = studentDAO.listStudentsToCourse(course);
+				for(int i=0;i<students.size();i++) {
+					Student student = students.get(i);
+					System.out.println("ESTUDANTE: " + student.getName()+": \n[0-FALTOU]\n[1-PRESENTE]\n[3-FALTA JUSTIFICADA]");
+					int call = sc.nextInt();
+					switch(call) {
+					case 0:
+						Frequency frequency = new Frequency(FrequencyStatus.ABSENCE,student);
+						student.addFrequency(frequency);
+						studentDAO.updateStudent(student);
+						break;
+					case 1: 
+						Frequency frequencyP = new Frequency(FrequencyStatus.PRESENCE,student);
+						student.addFrequency(frequencyP);
+						studentDAO.updateStudent(student);
+						break;
+					case 2: 
+						Frequency frequencyJ = new Frequency(FrequencyStatus.JUSFIED_ABSENCE,student);
+						System.out.println("Insira a justificativa:");
+						String justified = sc.nextLine();
+						frequencyJ.setJusfied(justified);
+						student.addFrequency(frequencyJ);
+						studentDAO.updateStudent(student);
+						break;
+						
+					}
+				}
+				
+				} catch (InputMismatchException ime) {
+					System.out.println("Algo errado foi digitado!");
+				} catch (ArrayIndexOutOfBoundsException aiobe) {
+					System.out.println("Um numero fora de limites foi digitado.");
+				} catch (NullPointerException npe) {
+					System.out.println("Algo estava vazio no sistema e não pode ser encontrado.");
+				}
 				break;
 
 			case REPORT:
+				
+				try {
+				
 				System.out.println("Buscando empresas...");
 				List<Company> companies = companyDAO.listCompany();
 				for (int i = 0; i < companies.size(); i++) {
@@ -614,6 +665,7 @@ public class Main {
 				int numberCompany = sc.nextInt();
 				sc.next();
 				Company company = companyDAO.recoverCompany(companies.get(numberCompany));
+				System.out.println("Buscando alunos associados a empresa...");
 				List<Student> students = studentDAO.listStudentsToCompany(company);
 				for(int i=0; i < students.size(); i++) {
 					System.out.println("| " +students.get(i).getName());
@@ -624,6 +676,14 @@ public class Main {
 						}
 					}
 					System.out.println("|_");
+				}
+				
+				} catch (InputMismatchException ime) {
+					System.out.println("Algo errado foi digitado!");
+				} catch (ArrayIndexOutOfBoundsException aiobe) {
+					System.out.println("Um numero fora de limites foi digitado.");
+				} catch (NullPointerException npe) {
+					System.out.println("Algo estava vazio no sistema e não pode ser encontrado.");
 				}
 				break;
 
