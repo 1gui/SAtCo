@@ -319,7 +319,7 @@ public class Main {
 						}
 
 						break;
-						
+
 					case EDIT:
 						try {
 							System.out.println("Buscando Empresas...");
@@ -332,24 +332,24 @@ public class Main {
 							sc.next();
 							Company company = companyDAO.recoverCompany(companies.get(numeroEmpresa));
 
-							System.out.println(
-									"\n\n O nome atual da empresa é:" + company.getName() + ". Digite o nome da empresa:");
+							System.out.println("\n\n O nome atual da empresa é:" + company.getName()
+									+ ". Digite o nome da empresa:");
 							String name = sc.next();
-							System.out
-									.println("O CNPJ atual da empresa é:" + company.getCnpj() + ". Digite o CNPJ da empresa:");
+							System.out.println(
+									"O CNPJ atual da empresa é:" + company.getCnpj() + ". Digite o CNPJ da empresa:");
 							String cnpj = sc.next();
-							System.out.println(
-									"O e-mail atual da empresa é:" + company.getEmail() + ". Digite o e-mail da empresa:");
+							System.out.println("O e-mail atual da empresa é:" + company.getEmail()
+									+ ". Digite o e-mail da empresa:");
 							String email = sc.next();
-							System.out.println(
-									"O endereço atual da empresa é:" + company.getAddress() + ". Digite o endereço da empresa:");
+							System.out.println("O endereço atual da empresa é:" + company.getAddress()
+									+ ". Digite o endereço da empresa:");
 							String address = sc.next();
-							System.out.println(
-									"O telefone atual da empresa é:" + company.getPhone() + ". Digite o telefone da empresa:");
+							System.out.println("O telefone atual da empresa é:" + company.getPhone()
+									+ ". Digite o telefone da empresa:");
 							String phone = sc.next();
 							companyDAO.updateCompany(new Company(company.getId(), name, cnpj, email, address, phone));
 							System.out.println("Empresa atualizada.");
-						
+
 						} catch (InputMismatchException ime) {
 							System.out.println("Algo errado foi digitado!");
 						} catch (ArrayIndexOutOfBoundsException aiobe) {
@@ -359,19 +359,19 @@ public class Main {
 						}
 
 						break;
-						
+
 					case DELETE:
 						try {
-						System.out.println("Buscando empresas...");
-						List<Company> companies = companyDAO.listCompany();
-						for (int i = 0; i < companies.size(); i++) {
-							System.out.println(i + " " + companies.get(i).getName());
-						}
-						System.out.println("Selecione uma empresa para remover");
-						int numberCompany = sc.nextInt();
-						sc.next();
-						Company company = companyDAO.recoverCompany(companies.get(numberCompany));
-						companyDAO.removeCompany(company);
+							System.out.println("Buscando empresas...");
+							List<Company> companies = companyDAO.listCompany();
+							for (int i = 0; i < companies.size(); i++) {
+								System.out.println(i + " " + companies.get(i).getName());
+							}
+							System.out.println("Selecione uma empresa para remover");
+							int numberCompany = sc.nextInt();
+							sc.next();
+							Company company = companyDAO.recoverCompany(companies.get(numberCompany));
+							companyDAO.removeCompany(company);
 						} catch (InputMismatchException ime) {
 							System.out.println("Algo errado foi digitado!");
 						} catch (ArrayIndexOutOfBoundsException aiobe) {
@@ -440,11 +440,11 @@ public class Main {
 							sc.next();
 							Subject subject = subjectDAO.recoverSubject(subjects.get(numberSubject));
 
-							System.out.println(
-									"\n\n O nome atual da materia é:" + subject.getName() + ". Digite o nome do aluno:");
+							System.out.println("\n\n O nome atual da materia é:" + subject.getName()
+									+ ". Digite o nome do aluno:");
 							String name = sc.next();
-							System.out.println(
-									"O professor atual da materia é" + subject.getTeacher().getName() + ". Buscando professores...");
+							System.out.println("O professor atual da materia é" + subject.getTeacher().getName()
+									+ ". Buscando professores...");
 							List<Teacher> teachers = teacherDAO.listTeacher();
 							for (int i = 0; i < teachers.size(); i++) {
 								System.out.println(i + " " + teachers.get(i).getName());
@@ -492,6 +492,113 @@ public class Main {
 				break;
 
 			case TEACHER:
+
+				while (menuS != MenuSecondary.EXIT) {
+					System.out.println("Professor - Opções\n[0-Cadastrar]\n[1-Editar]\n[2-Apagar]\n[3-Sair]");
+					try {
+						menuS = MenuSecondary.values()[Integer.parseInt(sc.next())];
+					} catch (InputMismatchException ime) {
+						System.out.println("Digite apenas numeros inteiros nos menus.");
+						menuP = MenuPrimary.INVALID;
+					} catch (ArrayIndexOutOfBoundsException aiobe) {
+						System.out.println("Digite apenas os numeros do display.");
+						menuP = MenuPrimary.INVALID;
+					}
+					
+					switch (menuS) {
+					
+					case REGISTER:
+						try {
+						System.out.println("/n/nInsira o nome do professor:");
+						String name = sc.next();
+						System.out.println("Insira o CPF do professor:");
+						String cpf = sc.next();
+						System.out.println("Insira o E-mail do professor:");
+						String email = sc.next();
+						System.out.println("Buscando materias...");
+						List<Subject> subjects = subjectDAO.listSubject();
+						for (int i = 0; i < subjects.size(); i++) {
+							System.out.println(i + " " + subjects.get(i).getName());
+						}
+						System.out.println("Selecione uma materia para inserir:");
+						int numberSubject = sc.nextInt();
+						sc.next();
+						Subject subject = subjectDAO.recoverSubject(subjects.get(numberSubject));
+						System.out.println("Buscando turmas:");
+						List<Course> courses = courseDAO.listCourse();
+						for (int i = 0; i < courses.size(); i++) {
+							System.out.println(i + " " + courses.get(i).getName());
+						}
+						System.out.println("Selecione uma turma para inserir:");
+						int numberCourse = sc.nextInt();
+						sc.next();
+						Course course = courseDAO.recoverCourse(courses.get(numberCourse));
+						Teacher teacher = new Teacher(name,cpf,email);
+						teacher.addCourse(course);
+						teacher.addSubject(subject);
+						teacherDAO.insertTeacher(teacher);
+						System.out.println("Professor adicionado...");
+						} catch (InputMismatchException ime) {
+							System.out.println("Algo errado foi digitado!");
+						} catch (ArrayIndexOutOfBoundsException aiobe) {
+							System.out.println("Um numero fora de limites foi digitado.");
+						} catch (NullPointerException npe) {
+							System.out.println("Algo estava vazio no sistema e não pode ser encontrado.");
+						}
+						break;
+					
+					case EDIT: 
+						
+						try {
+							System.out.println("Procurando professores...");
+							List<Teacher> teachers = teacherDAO.listTeacher();
+							for (int i = 0; i < teachers.size(); i++) {
+								System.out.println(i + " " + teachers.get(i).getName());
+							}
+							System.out.println("Digite o numero do professor para editar:");
+							int numberTeacher = sc.nextInt();
+							sc.next();
+							Teacher teacher = teachers.get(numberTeacher);
+							
+							
+						} catch (InputMismatchException ime) {
+							System.out.println("Algo errado foi digitado!");
+						} catch (ArrayIndexOutOfBoundsException aiobe) {
+							System.out.println("Um numero fora de limites foi digitado.");
+						} catch (NullPointerException npe) {
+							System.out.println("Algo estava vazio no sistema e não pode ser encontrado.");
+						}
+						
+						break;
+						
+					case DELETE:
+						
+						try {
+							List<Teacher> teachers = teacherDAO.listTeacher();
+							for (int i = 0; i < teachers.size(); i++) {
+								System.out.println(i + " " + teachers.get(i).getName());
+							}
+							System.out.println("Digite o numero do professor para remover:");
+							int numberTeacher = sc.nextInt();
+							sc.next();
+							Teacher teacher = teachers.get(numberTeacher);
+							teacherDAO.removeTeacher(teacher);
+							System.out.println("Professor removido...");
+							
+						} catch (InputMismatchException ime) {
+							System.out.println("Algo errado foi digitado!");
+						} catch (ArrayIndexOutOfBoundsException aiobe) {
+							System.out.println("Um numero fora de limites foi digitado.");
+						} catch (NullPointerException npe) {
+							System.out.println("Algo estava vazio no sistema e não pode ser encontrado.");
+						}
+						
+						break;
+						
+					}
+
+				}
+
 				break;
 
 			case ROLLCALL:
