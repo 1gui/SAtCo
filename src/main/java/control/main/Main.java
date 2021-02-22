@@ -605,6 +605,26 @@ public class Main {
 				break;
 
 			case REPORT:
+				System.out.println("Buscando empresas...");
+				List<Company> companies = companyDAO.listCompany();
+				for (int i = 0; i < companies.size(); i++) {
+					System.out.println(i + " " + companies.get(i).getName());
+				}
+				System.out.println("Selecione uma empresa para gerar relatório:");
+				int numberCompany = sc.nextInt();
+				sc.next();
+				Company company = companyDAO.recoverCompany(companies.get(numberCompany));
+				List<Student> students = studentDAO.listStudentsToCompany(company);
+				for(int i=0; i < students.size(); i++) {
+					System.out.println("| " +students.get(i).getName());
+					for(int j=0;j<students.get(i).getFrequencys().size(); j++) {
+						System.out.println("|"+students.get(i).getFrequencys().get(j).getDate() + ": " + students.get(i).getFrequencys().get(j).getStatus());
+						if(students.get(i).getFrequencys().get(j).getJusfied() != null) {
+							System.out.print(students.get(i).getFrequencys().get(j).getJusfied());
+						}
+					}
+					System.out.println("|_");
+				}
 				break;
 
 			default:
