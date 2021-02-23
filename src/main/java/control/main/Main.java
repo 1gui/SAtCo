@@ -524,7 +524,7 @@ public class Main {
 
 					case REGISTER:
 						try {
-							System.out.println("/n/nInsira o nome do professor:");
+							System.out.println("\n\nInsira o nome do professor:");
 							String name = sc.next();
 							System.out.println("Insira o CPF do professor:");
 							String cpf = sc.next();
@@ -575,7 +575,7 @@ public class Main {
 							sc.next();
 							Teacher teacher = teachers.get(numberTeacher);
 							System.out.println(
-									"/n/nO nome atual do professor é: " + teacher.getName() + ". Digite o nome:");
+									"\n\nO nome atual do professor é: " + teacher.getName() + ". Digite o nome:");
 							String name = sc.nextLine();
 							System.out.println("O CPF atual do professor é: " + teacher.getCpf() + ". Digite o CPF:");
 							String cpf = sc.next();
