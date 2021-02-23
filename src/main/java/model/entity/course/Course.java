@@ -35,10 +35,6 @@ public class Course {
 	@JoinColumn(name = "id_subject")
 	private List<Subject> subjects = new ArrayList<Subject>();
 
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_student")
-	private List<Student> students = new ArrayList<Student>();
-
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<Teacher> teachers = new ArrayList<Teacher>();
 
@@ -82,14 +78,7 @@ public class Course {
 		subjects.remove(subject);
 	}
 
-	public void addSubject(Student student) {
-		students.add(student);
-	}
-
-	public void removeSubject(Student student) {
-		students.remove(student);
-	}
-
+	
 	public void addTeacher(Teacher teacher) {
 		teachers.add(teacher);
 	}
@@ -102,9 +91,6 @@ public class Course {
 		return subjects;
 	}
 
-	public List<Student> getStudents() {
-		return students;
-	}
 
 	public List<Teacher> getTeachers() {
 		return teachers;

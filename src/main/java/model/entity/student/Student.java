@@ -36,16 +36,16 @@ public class Student {
 	@Column(name = "email_student", length = 40, nullable = false, unique = true)
 	private String email;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_course")
 	private Course course;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_company")
 	private Company company;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_frequency")
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_student")
 	private List<Frequency> frequencys = new ArrayList<Frequency>();
 
 	public Student() {

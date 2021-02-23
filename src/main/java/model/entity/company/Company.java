@@ -39,9 +39,6 @@ public class Company {
 	@Column(name = "phone_company", length = 20, nullable = false, unique = true)
 	private String phone;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_student")
-	private List<Student> students = new ArrayList<Student>();
 
 	public Company() {
 	}
@@ -118,17 +115,7 @@ public class Company {
 		this.phone = phone;
 	}
 
-	public void addStudent(Student student) {
-		students.add(student);
-	}
 	
-	public void removeStudent(Student student) {
-		students.remove(student);
-	}
-	
-	public List<Student> getStudents() {
-		return students;
-	}
 
 
 }
