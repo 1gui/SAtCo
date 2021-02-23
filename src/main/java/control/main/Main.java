@@ -704,13 +704,13 @@ public class Main {
 					for (int i = 0; i < students.size(); i++) {
 						System.out.println("| " + students.get(i).getName());
 						for (int j = 0; j < students.get(i).getFrequencys().size(); j++) {
-							System.out.print("|" + students.get(i).getFrequencys().get(j).getDate() + ": "
+							System.out.println("|" + students.get(i).getFrequencys().get(j).getDate() + ": "
 									+ students.get(i).getFrequencys().get(j).getStatus());
 							if (students.get(i).getFrequencys().get(j).getJusfied() != null) {
 								System.out.println(students.get(i).getFrequencys().get(j).getJusfied());
 							}
 						}
-						System.out.println("\n|_");
+						System.out.print("|_");
 					}
 
 				} catch (InputMismatchException ime) {
