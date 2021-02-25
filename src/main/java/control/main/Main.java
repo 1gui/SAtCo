@@ -43,7 +43,7 @@ public class Main {
 
 		System.out.println("BEM VINDO AO SISTEMA SAtCo");
 		System.out.println(
-				"Digite um numero para selecionar uma opção" + "\n[0-Aluno]\n[1-Classe]\n[2-Empresa]\n[3-Matéria]"
+				"Digite um numero para selecionar uma opção" + "\n[0-Aluno]\n[1-Turma]\n[2-Empresa]\n[3-Matéria]"
 						+ "\n[4-Professor]\n[5-Chamada]\n[6-Relatório]\n[7-Sair] ");
 
 		while (menuP == MenuPrimary.INVALID) {
@@ -78,7 +78,7 @@ public class Main {
 					case REGISTER:
 
 						try {
-							System.out.println("\n\nDigite o nome do aluno:");
+							System.out.println("\n[INSERIR]\nDigite o nome do aluno:");
 							String name = sc.next();
 							System.out.println("Digite o CPF do aluno:");
 							String cpf = sc.next();
@@ -98,7 +98,7 @@ public class Main {
 							for (int i = 0; i < companies.size(); i++) {
 								System.out.println(i + " " + companies.get(i).getName());
 							}
-							System.out.println("Digite o numero da compania a ser vinculada ao aluno:");
+							System.out.println("Digite o numero da empresa a ser vinculada ao aluno:");
 							int companyNumber = sc.nextInt();
 							sc.next();
 							Company company = companies.get(companyNumber);
@@ -216,7 +216,7 @@ public class Main {
 					case REGISTER:
 
 						try {
-							System.out.println("\n\nDigite o nome da turma:");
+							System.out.println("\n[INSERIR]\nDigite o nome da turma:");
 							String name = sc.next();
 							courseDAO.insertCourse(new Course(name));
 							System.out.println("Turma inserida.");
@@ -299,7 +299,7 @@ public class Main {
 					case REGISTER:
 
 						try {
-							System.out.println("\n\nDigite o nome da empresa:");
+							System.out.println("\n[INSERIR]\nDigite o nome da empresa:");
 							String name = sc.next();
 							System.out.println("Digite o CNPJ da empresa:");
 							String cnpj = sc.next();
@@ -309,13 +309,8 @@ public class Main {
 							String address = sc.next();
 							System.out.println("Digite o telefone da empresa:");
 							String phone = sc.next();
-							System.out.println("Buscando Turmas..");
-							List<Company> companies = companyDAO.listCompany();
-							for (int i = 0; i < companies.size(); i++) {
-								System.out.println(i + " " + companies.get(i).getName());
-							}
 							companyDAO.insertCompany(new Company(name, cnpj, email, address, phone));
-							System.out.println("Empresa inserido.");
+							System.out.println("Empresa inserida.");
 
 						} catch (InputMismatchException ime) {
 							System.out.println("Algo errado foi digitado!");
@@ -417,7 +412,7 @@ public class Main {
 					case REGISTER:
 
 						try {
-							System.out.println("\n\nDigite o nome da materia:");
+							System.out.println("\n[INSERIR]\nDigite o nome da materia:");
 							String name = sc.next();
 							System.out.println("Buscando professores...");
 							List<Teacher> teachers = teacherDAO.listTeacher();
@@ -524,7 +519,7 @@ public class Main {
 
 					case REGISTER:
 						try {
-							System.out.println("\n\nInsira o nome do professor:");
+							System.out.println("\n[INSERIR]\nInsira o nome do professor:");
 							String name = sc.next();
 							System.out.println("Insira o CPF do professor:");
 							String cpf = sc.next();
@@ -699,7 +694,7 @@ public class Main {
 			case REPORT:
 
 				try {
-					System.out.println("Buscando alunos..");
+					System.out.println("Buscando alunos do relatório..");
 					List<Student> students = studentDAO.listStudent();
 					for (int i = 0; i < students.size(); i++) {
 						System.out.println("| " + students.get(i).getName());
@@ -730,7 +725,7 @@ public class Main {
 			System.out.println("Voltando ao menu principal");
 			System.out.println("BEM VINDO AO SISTEMA SAtCo");
 			System.out.println(
-					"Digite um numero para selecionar uma opção" + "\n[0-Aluno]\n[1-Classe]\n[2-Empresa]\n[3-Matéria]"
+					"Digite um numero para selecionar uma opção" + "\n[0-Aluno]\n[1-Turma]\n[2-Empresa]\n[3-Matéria]"
 							+ "\n[4-Professor]\n[5-Chamada]\n[6-Relatório]\n[7-Sair] ");
 			try {
 				menuP = MenuPrimary.values()[Integer.parseInt(sc.next())];
